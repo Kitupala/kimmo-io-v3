@@ -3,18 +3,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /*--grid-line: #ea5e5e;*/
+  --grid-line: rgba(255, 255, 255, 0.05);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-grid-line: var(--grid-line);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #08090A;
     --foreground: #ededed;
   }
 }
