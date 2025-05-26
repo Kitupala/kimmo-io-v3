@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { cn } from "@/app/lib/utils";
+import { BRIGHTNESS_DIM_SETTINGS } from "@/app/constants";
 
 gsap.registerPlugin(useGSAP);
 
@@ -13,46 +14,44 @@ export default function GridLines() {
 
   useGSAP(
     () => {
-      // Center line animation
-      gsap.fromTo(
-        [linesRef.current[2]],
-        {
-          scaleY: 0,
-          transformOrigin: "top",
-        },
-        {
-          scaleY: 1,
-          duration: 1,
-          ease: "circ.inOut",
-          stagger: 0.2,
-        },
-      );
+      const masterTl = gsap.timeline({
+        defaults: { ease: "circ.inOut" },
+      });
 
-      // Outer lines animation
-      gsap.fromTo(
-        [
-          linesRef.current[0],
-          linesRef.current[1],
-          linesRef.current[3],
-          linesRef.current[4],
-        ],
-        {
+      // Set initial states with alternating transform origins
+      linesRef.current.forEach((line, index) => {
+        if (!line) return;
+
+        const transformOrigin = index % 2 === 0 ? "top" : "bottom";
+
+        gsap.set(line, {
           scaleY: 0,
-          transformOrigin: "bottom",
+          transformOrigin: transformOrigin,
+          filter: "brightness(0)",
+        });
+      });
+
+      masterTl.to(linesRef.current, {
+        scaleY: 1,
+        filter: "brightness(3)",
+        duration: 1,
+        stagger: {
+          each: 0.1,
+          from: "edges",
         },
+      });
+
+      // Brightness dimming animation
+      masterTl.to(
+        linesRef.current.filter(Boolean),
         {
-          scaleY: 1,
-          duration: 1,
-          delay: 0.25,
-          ease: "circ.inOut",
-          stagger: {
-            each: 0.15,
-            from: "center",
-          },
+          filter: "brightness(1)",
+          duration: BRIGHTNESS_DIM_SETTINGS.duration,
+          ease: BRIGHTNESS_DIM_SETTINGS.ease,
         },
+        "+=0.1",
       );
     },
-
     {
       scope: containerRef,
     },
@@ -61,13 +60,13 @@ export default function GridLines() {
   return (
     <div
       ref={containerRef}
-      className="w-screen h-full flex flex-col items-center justify-items-center fixed top-0 left-0 -z-10"
+      className="fixed top-0 left-0 -z-10 flex h-full w-screen flex-col items-center justify-items-center"
     >
       {/* BLURRED CIRCLE */}
-      <div className="w-[950px] h-[950px] rounded-full bg-[#121416]/80 blur-[160px] absolute -top-[600px] -z-10" />
+      <div className="absolute -top-[600px] z-10 h-[950px] w-[950px] rounded-full bg-[#121416]/80 blur-[160px]" />
 
       {/* VERTICAL LINES*/}
-      <div className="flex flex-row min-w-fit gap-[185px] md:gap-[229px]">
+      <div className="flex min-w-fit flex-row gap-[185px] md:gap-[229px]">
         {Array(5)
           .fill(null)
           .map((_, i) => (
@@ -77,7 +76,7 @@ export default function GridLines() {
                 linesRef.current[i] = el;
               }}
               className={cn(
-                "h-screen w-px bg-grid-line",
+                "bg-grid-line will-change-filter h-screen w-px",
                 `${i === 0 || i === 4 ? "max-[970px]:hidden" : ""}`,
               )}
             />
