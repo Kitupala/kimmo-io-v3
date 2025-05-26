@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { everett } from "./fonts";
 import "./globals.css";
-import Header from "@/app/components/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+//
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "kimmo.io",
@@ -25,12 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
-        <main>{children}</main>
-      </body>
+      <body className={`${everett.variable} antialiased`}>{children}</body>
+      <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
 }
