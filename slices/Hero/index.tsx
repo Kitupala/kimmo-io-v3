@@ -19,6 +19,9 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 
       <HeroImage />
 
+      {/* BLURRED CIRCLE */}
+      {/*<div className="absolute -top-[600px] z-10 h-[950px] w-[950px] rounded-full bg-red-600/80 blur-[16px]" />*/}
+
       {isFilled.richText(slice.primary.heading) && (
         <PrismicRichText
           field={slice.primary.heading}
@@ -46,7 +49,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             heading2: ({ children }) => (
               <AnimatedText
                 as="h2"
-                className="text-text-secondary kerning-none py-4 text-xl font-light md:text-3xl"
+                className="text-text-secondary kerning-none mb-80 px-4 text-xl font-light md:text-3xl lg:mb-[390px]"
                 splitType="words"
                 delay={1.6}
                 lineHeight={1.4}

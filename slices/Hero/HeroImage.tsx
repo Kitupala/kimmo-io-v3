@@ -126,7 +126,7 @@ const HeroImage = () => {
 
   return (
     <div
-      className="absolute flex h-[100vh] w-full flex-col items-center"
+      className="flex h-full w-full flex-col items-center"
       ref={containerRef}
     >
       {/* CIRCLE BORDER with brightness effect */}

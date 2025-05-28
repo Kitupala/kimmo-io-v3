@@ -6,6 +6,7 @@
   /*--grid-line: rgba(234, 94, 94, 0.6);*/
 
   --grid-line: rgba(159, 159, 173, 0.1);
+  --grid-line-bright: rgba(159, 159, 173, 0.3);
   --header-background: rgba(9, 9, 9, 0.25);
   --gradient-text-from: rgba(242, 243, 243);
   --gradient-text-to: rgba(72, 79, 86);
@@ -62,12 +63,15 @@
   --color-accent: #7170ff;
   --color-accent-hover: #828fff;
   --color-accent-tint: #18182f;
+
+  --gradientBorder-gradient: linear-gradient(to bottom right, hsla(0, 0%, 100%, .17), transparent);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-grid-line: var(--grid-line);
+  --color-grid-line-bright: var(--grid-line-bright);
   --color-header-background: var(--header-background);
   --color-gradient-text-from: var(--gradient-text-from);
   --color-gradient-text-to: var(--gradient-text-to);
@@ -80,6 +84,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-everett: var(--font-everett);
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -93,8 +98,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-everett), system-ui, sans-serif;
-  /*font-family: 'TWKEverett-Regular', 'Everett', sans-serif;*/
 }
+
+
 
 
 
@@ -110,6 +116,15 @@ body {
 
   .kerning-none {
     font-kerning: none;
+  }
+
+  .border-container {
+    position: relative;
+  }
+
+  .border-container::before {
+    @apply absolute -inset-[5px] -z-10 rounded-xl border border-grid-line/80 w-auto max-w-[1000px] lg:mx-auto bg-background;
+    content: "";
   }
 
 

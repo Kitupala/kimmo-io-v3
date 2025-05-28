@@ -58,30 +58,31 @@ export default function GridLines() {
   );
 
   return (
-    <div
-      ref={containerRef}
-      className="fixed top-0 left-0 -z-10 flex h-full w-screen flex-col items-center justify-items-center"
-    >
+    <>
       {/* BLURRED CIRCLE */}
-      <div className="absolute -top-[600px] z-10 h-[950px] w-[950px] rounded-full bg-[#121416]/80 blur-[160px]" />
-
-      {/* VERTICAL LINES*/}
-      <div className="flex min-w-fit flex-row gap-[185px] md:gap-[229px]">
-        {Array(5)
-          .fill(null)
-          .map((_, i) => (
-            <div
-              key={i}
-              ref={(el: HTMLDivElement | null) => {
-                linesRef.current[i] = el;
-              }}
-              className={cn(
-                "bg-grid-line will-change-filter h-screen w-px",
-                `${i === 0 || i === 4 ? "max-[970px]:hidden" : ""}`,
-              )}
-            />
-          ))}
+      <div className="absolute -top-[600px] -z-10 h-[950px] w-[950px] rounded-full bg-[#121416]/80 blur-[160px]" />
+      <div
+        ref={containerRef}
+        className="fixed top-0 left-0 -z-20 flex h-full w-screen flex-col items-center justify-items-center"
+      >
+        {/* VERTICAL LINES*/}
+        <div className="flex min-w-fit flex-row gap-[185px] md:gap-[229px]">
+          {Array(5)
+            .fill(null)
+            .map((_, i) => (
+              <div
+                key={i}
+                ref={(el: HTMLDivElement | null) => {
+                  linesRef.current[i] = el;
+                }}
+                className={cn(
+                  "bg-grid-line will-change-filter h-screen w-px",
+                  `${i === 0 || i === 4 ? "max-[970px]:hidden" : ""}`,
+                )}
+              />
+            ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
