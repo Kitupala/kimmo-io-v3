@@ -1,22 +1,98 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useWindowScroll } from "react-use";
+
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/app/components/Logo";
+import NavMobile from "@/app/components/NavMobile";
+import NavDesktop from "@/app/components/NavDesktop";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 const Header = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const { y: currentScrollY } = useWindowScroll();
+
+  useEffect(() => {
+    if (currentScrollY === 0) {
+      setIsNavVisible(true);
+    } else if (currentScrollY > lastScrollY) {
+      setIsNavVisible(false);
+    } else if (currentScrollY < lastScrollY) {
+      setIsNavVisible(true);
+    }
+    setLastScrollY(currentScrollY);
+  }, [currentScrollY, lastScrollY]);
+
+  // Initial page load animation
+  useEffect(() => {
+    if (containerRef.current && !isInitialized && window.scrollY <= 10) {
+      gsap.set(containerRef.current, {
+        y: -150,
+        opacity: 0,
+        scale: 0.95,
+      });
+
+      gsap.to(containerRef.current, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "elastic.out(0.4, 0.2)",
+        delay: 3.2,
+        onComplete: () => setIsInitialized(true),
+      });
+    } else if (containerRef.current && !isInitialized) {
+      gsap.set(containerRef.current, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      });
+      setIsInitialized(true);
+    }
+  }, [isInitialized]);
+
+  // Scroll-based visibility animation
+  useGSAP(
+    () => {
+      if (isInitialized) {
+        gsap.to(containerRef.current, {
+          y: isNavVisible ? 0 : -100,
+          opacity: isNavVisible ? 1 : 0,
+          duration: 0.3,
+        });
+      }
+    },
+    { dependencies: [isNavVisible, isInitialized], scope: containerRef },
+  );
+
   return (
-    <header className="bg-background/15 border-grid-line z-20 mx-4 mt-4 w-auto max-w-[1000px] rounded-xl border p-8 backdrop-blur-sm lg:mx-auto lg:w-full">
-      <div className="mx-auto flex items-center justify-between">
-        <Link href="/">
-          <Image
-            src="/assets/images/logo.svg"
-            alt="logo"
-            width={120}
-            height={30}
-            priority
-            className="w-[80px] cursor-pointer"
-          />
-        </Link>
+    <div
+      ref={containerRef}
+      className="fixed inset-x-0 top-3 z-40 backdrop-blur-md"
+    >
+      <div className="mx-auto w-full max-w-[1000px] px-2 sm:px-4">
+        <header className="bg-background/30 border-grid-line relative z-30 rounded-xl border px-8 py-4">
+          <div className="mx-auto flex items-center justify-between">
+            <Link href="/" className="relative z-50 py-4">
+              <Logo fill="#d0d6e0" />
+            </Link>
+
+            <NavMobile />
+            <NavDesktop />
+          </div>
+        </header>
       </div>
-    </header>
+    </div>
   );
 };
 
