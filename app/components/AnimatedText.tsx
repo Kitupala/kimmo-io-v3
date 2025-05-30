@@ -71,7 +71,6 @@ function AnimatedText<T extends ElementType = "div">({
           ease,
         });
 
-        // Apply gradient class if needed
         if (gradient) {
           textRef.current.classList.add("text-gradient");
         }
@@ -87,7 +86,6 @@ function AnimatedText<T extends ElementType = "div">({
           filter: `blur(${blur}px)`,
         });
 
-        // If gradient, apply the text-gradient class to each line
         if (
           gradient &&
           Array.isArray(elements) &&

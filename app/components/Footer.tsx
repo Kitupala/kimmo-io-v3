@@ -8,7 +8,7 @@ const Footer = async () => {
   const footer = await client.getSingle("footer");
 
   return (
-    <footer className="border-container mx-6 mb-4 lg:mx-auto">
+    <footer className="border-container mx-3 mb-3 sm:mx-4 sm:mb-4 lg:mx-auto">
       <div className="bg-background/15 border-grid-line relative z-20 w-auto max-w-[990px] rounded-lg border p-8 pb-10 backdrop-blur-sm lg:mx-auto">
         <div className="flex flex-col items-center space-y-8">
           <div className="one flex flex-col items-center space-y-4">

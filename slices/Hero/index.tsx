@@ -13,14 +13,10 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="first:pt-0"
+      className="first:pt-22"
     >
       <GridLines />
-
       <HeroImage />
-
-      {/* BLURRED CIRCLE */}
-      {/*<div className="absolute -top-[600px] z-10 h-[950px] w-[950px] rounded-full bg-red-600/80 blur-[16px]" />*/}
 
       {isFilled.richText(slice.primary.heading) && (
         <PrismicRichText
@@ -30,10 +26,11 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               <AnimatedText
                 gradient
                 as="h1"
-                className="text-text-primary my-12 text-6xl leading-tight font-light tracking-tight md:text-8xl"
+                className="text-text-primary my-12 w-full text-6xl font-light tracking-tight md:text-8xl md:leading-tight"
                 ease="power2.inOut"
                 duration={0.5}
                 delay={1}
+                lineHeight={1.2}
               >
                 {children}
               </AnimatedText>
@@ -49,7 +46,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             heading2: ({ children }) => (
               <AnimatedText
                 as="h2"
-                className="text-text-secondary kerning-none mb-80 px-4 text-xl font-light md:text-3xl lg:mb-[390px]"
+                className="text-text-secondary kerning-none mb-80 text-xl font-light md:text-3xl lg:mb-[390px]"
                 splitType="words"
                 delay={1.6}
                 lineHeight={1.4}
