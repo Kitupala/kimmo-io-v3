@@ -1,0 +1,105 @@
+{
+  "type": "SharedSlice",
+  "id": "project_overview_card",
+  "name": "ProjectOverviewCards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard layout with project details, technology icons, action links, and a main project image.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2,heading3,strong"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "project": {
+          "type": "Group",
+          "config": {
+            "label": "Project",
+            "repeat": true,
+            "fields": {
+              "eyebrow": {
+                "type": "Text",
+                "config": {
+                  "label": "Eyebrow",
+                  "placeholder": ""
+                }
+              },
+              "project_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Project Title",
+                  "placeholder": ""
+                }
+              },
+              "project_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Project Description",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "multi": "paragraph,strong,em"
+                }
+              },
+              "project_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Project Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "technologies": {
+                "type": "Text",
+                "config": {
+                  "label": "Technologies (comma-separated)",
+                  "placeholder": ""
+                }
+              },
+              "repository_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Repository Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "deployment_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Deployment Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
