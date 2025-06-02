@@ -9,17 +9,17 @@ const Footer = async () => {
 
   return (
     <footer className="border-container mx-3 mb-3 sm:mx-4 sm:mb-4 lg:mx-auto">
-      <div className="bg-background/15 border-grid-line relative z-20 w-auto max-w-[990px] rounded-lg border p-8 pb-10 backdrop-blur-sm lg:mx-auto">
-        <div className="flex flex-col items-center space-y-8">
-          <div className="one flex flex-col items-center space-y-4">
+      <div className="bg-background/15 border-grid-line xs:p-8 xs:pb-10 relative z-20 w-auto max-w-[990px] overflow-x-hidden rounded-lg border p-6 backdrop-blur-sm lg:mx-auto">
+        <div className="xs:space-y-8 flex flex-col items-center space-y-4">
+          <div className="xs:space-y-4 flex w-full flex-col items-center space-y-2.5">
             {isFilled.richText(footer.data.heading) && (
-              <h4 className="text-text-secondary text-xs font-light tracking-wide uppercase">
+              <h4 className="text-text-secondary xs:text-xs text-[10px] font-light tracking-wide uppercase">
                 <PrismicRichText field={footer.data.heading} />
               </h4>
             )}
 
-            <nav aria-label="footer">
-              <ul className="mb-2 flex space-x-6">
+            <nav aria-label="footer social links">
+              <ul className="xs:mb-2 mb-1 flex space-x-6">
                 {footer.data.social_links.map((item, i) => (
                   <li key={i}>
                     <PrismicNextLink

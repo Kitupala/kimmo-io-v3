@@ -94,7 +94,7 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = ProjectOverviewCardSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -223,6 +223,160 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *ProjectOverviewCards → Default → Primary → Project*
+ */
+export interface ProjectOverviewCardSliceDefaultPrimaryProjectItem {
+  /**
+   * Eyebrow field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].eyebrow
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Project Title field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].project_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  project_title: prismic.KeyTextField;
+
+  /**
+   * Project Description field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].project_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  project_description: prismic.RichTextField;
+
+  /**
+   * Project Image field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].project_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  project_image: prismic.ImageField<never>;
+
+  /**
+   * Technologies (comma-separated) field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].technologies
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  technologies: prismic.KeyTextField;
+
+  /**
+   * Repository Link field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].repository_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  repository_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Deployment Link field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].deployment_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  deployment_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *ProjectOverviewCards → Default → Primary*
+ */
+export interface ProjectOverviewCardSliceDefaultPrimary {
+  /**
+   * Heading field in *ProjectOverviewCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *ProjectOverviewCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Project field in *ProjectOverviewCards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  project: prismic.GroupField<
+    Simplify<ProjectOverviewCardSliceDefaultPrimaryProjectItem>
+  >;
+}
+
+/**
+ * Default variation for ProjectOverviewCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard layout with project details, technology icons, action links, and a main project image.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectOverviewCardSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectOverviewCardSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectOverviewCards*
+ */
+type ProjectOverviewCardSliceVariation = ProjectOverviewCardSliceDefault;
+
+/**
+ * ProjectOverviewCards Shared Slice
+ *
+ * - **API ID**: `project_overview_card`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectOverviewCardSlice = prismic.SharedSlice<
+  "project_overview_card",
+  ProjectOverviewCardSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -255,6 +409,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ProjectOverviewCardSlice,
+      ProjectOverviewCardSliceDefaultPrimaryProjectItem,
+      ProjectOverviewCardSliceDefaultPrimary,
+      ProjectOverviewCardSliceVariation,
+      ProjectOverviewCardSliceDefault,
     };
   }
 }

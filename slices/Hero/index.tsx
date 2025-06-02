@@ -13,7 +13,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="first:pt-22"
+      className="items-center text-center first:pt-22"
     >
       <GridLines />
       <HeroImage />
@@ -26,11 +26,11 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               <AnimatedText
                 gradient
                 as="h1"
-                className="text-text-primary my-12 w-full text-6xl font-light tracking-tight md:text-8xl md:leading-tight"
+                className="text-text-primary xs:text-7xl xs:my-12 my-8 w-full text-5xl font-light tracking-tight md:text-8xl md:leading-tight"
                 ease="power2.inOut"
                 duration={0.5}
                 delay={1}
-                lineHeight={1.2}
+                lineHeight={1.1}
               >
                 {children}
               </AnimatedText>
@@ -46,7 +46,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             heading2: ({ children }) => (
               <AnimatedText
                 as="h2"
-                className="text-text-secondary kerning-none mb-80 text-xl font-light md:text-3xl lg:mb-[390px]"
+                className="text-text-secondary kerning-none xs:text-xl text-base font-light md:text-3xl"
                 splitType="words"
                 delay={1.6}
                 lineHeight={1.4}

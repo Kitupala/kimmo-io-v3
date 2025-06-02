@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "project_overview_card": {
+              "type": "SharedSlice"
+            },
             "hero": {
               "type": "SharedSlice"
             }

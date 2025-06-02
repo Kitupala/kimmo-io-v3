@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -59,14 +60,19 @@ export default function GridLines() {
 
   return (
     <>
-      {/* BLURRED CIRCLE */}
-      <div className="absolute -top-[600px] -z-10 h-[950px] w-[950px] rounded-full bg-[#121416]/80 blur-[160px]" />
+      {/* BLURRED TOP */}
+      <div className="xs:-top-[290px] xs:h-[700px] absolute -top-[280px] left-1/2 -z-10 h-[700px] w-screen max-w-[1150px] -translate-x-1/2 overflow-hidden md:-top-[480px] md:h-[1000px]">
+        <div className="absolute h-full w-full">
+          <TopBlur className="w-full" />
+        </div>
+      </div>
+
       <div
         ref={containerRef}
         className="fixed top-0 left-0 -z-20 flex h-full w-screen flex-col items-center justify-items-center"
       >
         {/* VERTICAL LINES*/}
-        <div className="flex min-w-fit flex-row gap-[185px] md:gap-[229px]">
+        <div className="xs:gap-[185px] flex min-w-fit flex-row gap-[149px] md:gap-[229px]">
           {Array(5)
             .fill(null)
             .map((_, i) => (
@@ -86,3 +92,47 @@ export default function GridLines() {
     </>
   );
 }
+
+const TopBlur: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
+    fill="none"
+    viewBox="0 0 1150 536"
+    preserveAspectRatio="xMidYMid meet"
+    {...props}
+  >
+    <g filter="url(#filter0_f_15_6)">
+      <circle
+        cx="575"
+        cy="-39"
+        r="425"
+        fill="#121416"
+        fillOpacity="0.7"
+      ></circle>
+    </g>
+    <defs>
+      <filter
+        id="filter0_f_15_6"
+        width="1150"
+        height="1150"
+        x="0"
+        y="-614"
+        colorInterpolationFilters="sRGB"
+        filterUnits="userSpaceOnUse"
+      >
+        <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+        <feBlend
+          in="SourceGraphic"
+          in2="BackgroundImageFix"
+          result="shape"
+        ></feBlend>
+        <feGaussianBlur
+          result="effect1_foregroundBlur_15_6"
+          stdDeviation="75"
+        ></feGaussianBlur>
+      </filter>
+    </defs>
+  </svg>
+);

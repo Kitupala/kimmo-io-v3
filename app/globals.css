@@ -83,6 +83,12 @@
 
   --font-everett: var(--font-everett);
 
+  --breakpoint-xs: 31rem;
+
+
+
+
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -108,6 +114,19 @@ body {
     @apply  bg-gradient-to-br from-text-primary from-25% to-text-tertiary bg-clip-text text-transparent;
   }
 
+  .fade-stripe {
+    background-image: linear-gradient(
+            180deg,
+            transparent,
+            rgba(8, 9, 10, 0.12) 40%,
+            rgba(97, 106, 115, 0.12) 60%,
+            rgba(8, 9, 10, 0)
+            /*rgba(8, 9, 10, 0.12) 40%,*/
+            /*rgba(97, 106, 115, 0.12) 60%,*/
+            /*rgba(8, 9, 10, 0)*/
+    );
+  }
+
   .will-change-filter {
     @apply will-change-[filter];
   }
@@ -121,9 +140,8 @@ body {
   }
 
   .border-container::before {
-    @apply absolute -inset-[5px] -z-10 rounded-xl border border-grid-line/80 w-auto max-w-[1000px] lg:mx-auto bg-background;
+    @apply absolute -inset-[4px] -z-10 rounded-xl border border-grid-line/80 w-auto max-w-[1000px] lg:mx-auto bg-background xs:-inset-[5px];
     content: "";
   }
-
-
 }
+

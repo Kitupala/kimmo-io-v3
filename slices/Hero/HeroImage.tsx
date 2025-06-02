@@ -29,10 +29,11 @@ const HeroImage = () => {
       });
 
       const getResponsiveWidths = () => {
-        const isSmallerScreen = window.innerWidth < 768;
+        const isMediumScreen = window.innerWidth < 768;
+        const isSmallScreen = window.innerWidth < 500;
         return {
-          line1: isSmallerScreen ? "370px" : "460px",
-          line2: isSmallerScreen ? "100vw" : "920px",
+          line1: isSmallScreen ? "300px" : isMediumScreen ? "370px" : "460px",
+          line2: isMediumScreen ? "100vw" : "920px",
         };
       };
 
@@ -110,7 +111,6 @@ const HeroImage = () => {
       const handleResize = () => {
         const { line1, line2 } = getResponsiveWidths();
 
-        // Use GSAP to update widths so they maintain consistency with the animation
         gsap.set(line1Ref.current, { width: line1 });
         gsap.set(line2Ref.current, { width: line2 });
       };
@@ -129,26 +129,25 @@ const HeroImage = () => {
       className="flex h-full w-full flex-col items-center"
       ref={containerRef}
     >
-      {/* CIRCLE BORDER with brightness effect */}
+      {/* CIRCLE BORDER */}
       <div
         ref={circleRef}
-        className="border-grid-line absolute -z-20 mt-4 h-[480px] w-[480px] rounded-full border md:h-[594px] md:w-[594px]"
+        className="border-grid-line xs:h-[480px] xs:w-[480px] xs:mt-4 absolute -z-20 h-[360px] w-[360px] rounded-full border md:h-[594px] md:w-[594px]"
       />
 
       {/* IMAGE CONTAINER */}
-      <div className="absolute -z-30 mt-4 h-[480px] w-[480px] md:h-[594px] md:w-[594px]">
+      <div className="xs:h-[480px] xs:w-[480px] xs:mt-4 absolute -z-30 h-[360px] w-[360px] md:h-[594px] md:w-[594px]">
         <Image
           ref={imageRef}
           src="/assets/images/hero.svg"
           alt="hero image"
           fill
-          sizes="(max-width: 768px) 480px, 594px"
-          className="will-change-filter object-contain opacity-0"
+          sizes="(max-width: 768px) 360px, 480px, 594px"
         />
       </div>
 
       {/* HORIZONTAL LINES */}
-      <div className="absolute mt-[380px] flex flex-col items-center gap-42 md:mt-[470px] md:gap-50">
+      <div className="xs:mt-[380px] xs:gap-42 absolute mt-[270px] flex flex-col items-center gap-32 md:mt-[470px] md:gap-50">
         <div ref={line1Ref} className="bg-grid-line h-[1px]" />
         <div ref={line2Ref} className="bg-grid-line h-[1px]" />
       </div>
