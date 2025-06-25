@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { Roboto_Mono } from "next/font/google";
 
 export const everett = localFont({
   src: [
@@ -20,4 +21,11 @@ export const everett = localFont({
   ],
   display: "swap",
   variable: "--font-everett",
+});
+
+export const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto-mono",
+  weight: ["400", "500", "700"],
 });
