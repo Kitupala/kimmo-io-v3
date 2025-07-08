@@ -4,6 +4,7 @@ import { cn } from "@/app/lib/utils";
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP);
 
@@ -43,8 +44,10 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
     css3: "/assets/icons/css3.svg",
     express: "/assets/icons/express.svg",
     figma: "/assets/icons/figma.svg",
+    firebase: "/assets/icons/firebase.svg",
     github: "/assets/icons/github.svg",
     gitlab: "/assets/icons/gitlab.svg",
+    google_gemini: "/assets/icons/google-gemini.svg",
     gsap: "/assets/icons/gsap.svg",
     html5: "/assets/icons/html5.svg",
     javascript: "/assets/icons/javascript.svg",
@@ -52,11 +55,14 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
     postgresql: "/assets/icons/postgresql.svg",
     prismic: "/assets/icons/prismic.svg",
     react: "/assets/icons/react.svg",
+    react_router: "/assets/icons/react-router.svg",
     shadcn: "/assets/icons/shadcn.svg",
     supabase: "/assets/icons/supabase.svg",
+    syncfusion: "/assets/icons/syncfusion.svg",
     tailwindcss: "/assets/icons/tailwindcss.svg",
     threejs: "/assets/icons/threejs.svg",
     typescript: "/assets/icons/typescript.svg",
+    vapi_ai: "/assets/icons/vapi.png",
     vercel: "/assets/icons/vercel.svg",
   };
 
@@ -65,20 +71,25 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
     css3: "CSS3",
     express: "Express.js",
     figma: "Figma",
+    firebase: "Firebase",
     github: "GitHub",
     gitlab: "GitLab",
-    gsap: "GSAP",
+    google_gemini: "Google Gemini",
+    gsap: "GreenSock Animation Platform",
     html5: "HTML5",
     javascript: "JavaScript",
     nextjs: "Next.js",
     postgresql: "PostgreSQL",
     prismic: "Prismic",
     react: "React",
+    react_router: "React Router",
     shadcn: "shadcn/ui",
     supabase: "Supabase",
+    syncfusion: "Syncfusion",
     tailwindcss: "Tailwind CSS",
     threejs: "Three.js",
     typescript: "TypeScript",
+    vapi_ai: "Vapi AI",
     vercel: "Vercel",
   };
 
@@ -103,8 +114,14 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
             onMouseEnter={() => setActiveTooltip(tech)}
             onMouseLeave={() => setActiveTooltip(null)}
           >
-            <div className="flex size-6 flex-col items-center justify-center lg:size-9">
-              <img src={iconUrl} alt={displayName} className="object-contain" />
+            <div className="flex flex-col items-center justify-center">
+              <Image
+                src={iconUrl}
+                alt={displayName}
+                width={24}
+                height={24}
+                className="size-6 object-contain lg:size-9"
+              />
 
               {activeTooltip === tech && (
                 <div
