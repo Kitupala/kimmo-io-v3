@@ -110,13 +110,21 @@
 							[
 								"deployment_link",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "69416c70-d546-4fa8-8f0d-aa6afbea3e19",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "http://twitter.com",
 										"text": "hollow"
 									}
+								}
+							],
+							[
+								"marquee",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "anyone",
+									"type": "Text"
 								}
 							]
 						]

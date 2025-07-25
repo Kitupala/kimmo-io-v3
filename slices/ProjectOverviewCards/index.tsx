@@ -1,52 +1,87 @@
-import { FC } from "react";
-import { Content, isFilled } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Bounded } from "@/app/components/Bounded";
-import AnimatedText from "@/app/components/AnimatedText";
+"use client";
 
-export type ProjectOverviewCardProps =
-  SliceComponentProps<Content.ProjectOverviewCardSlice>;
+import React, { FC, useMemo, useRef, useState } from "react";
+import { useLenis } from "@/app/hooks/useLenis";
+import { createCardRefs } from "./utils/cardUtils";
+import { useProjectCardsAnimation } from "./hooks/useProjectCardsAnimation";
+import { useProgressBar } from "./hooks/useProgressBar";
 
-const ProjectOverviewCard: FC<ProjectOverviewCardProps> = ({ slice }) => {
+import IntroSection from "./components/IntroSection";
+import ProjectCard from "./components/ProjectCard";
+import ProgressBar from "./components/ProgressBar";
+import OutroSection from "./components/OutroSection";
+import type { ProjectOverviewCardProps } from "./types";
+
+const ProjectOverviewCards: FC<ProjectOverviewCardProps> = ({ slice }) => {
+  const [isLastCardVisible, setIsLastCardVisible] = useState(false);
+  const [isInNextSection, setIsInNextSection] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsSectionRef = useRef<HTMLDivElement>(null);
+  const scrollHintRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const progressBarInnerRef = useRef<HTMLDivElement>(null);
+
+  // Memoized card refs
+  const cardRefs = useMemo(
+    () => createCardRefs(slice.primary.project.length),
+    [slice.primary.project.length],
+  );
+
+  const lenis = useLenis({
+    duration: 3,
+    wheelMultiplier: 0.65,
+  });
+
+  const { cardProgressRef } = useProgressBar({
+    cardsSectionRef,
+    progressBarInnerRef,
+    lenis,
+  });
+
+  useProjectCardsAnimation({
+    containerRef,
+    cardsSectionRef,
+    scrollHintRef,
+    progressBarRef,
+    cardRefs,
+    projects: slice.primary.project,
+    lenis,
+    setIsLastCardVisible,
+    setIsInNextSection,
+  });
+
   return (
-    <Bounded
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-      className="xs:mt-96 fade-stripe mt-[17.5rem] mb-12 ml-28 h-[900px] md:mt-[30rem]"
-    >
-      {isFilled.richText(slice.primary.heading) && (
-        <PrismicRichText
-          field={slice.primary.heading}
-          components={{
-            heading2: ({ children }) => (
-              <AnimatedText
-                as="h2"
-                className="text-text-secondary kerning-none xs:text-xl text-base font-light md:text-3xl"
-                splitType="words"
-                gradient
-              >
-                {children}
-              </AnimatedText>
-            ),
-          }}
-        />
-      )}
+    <div ref={containerRef} className="relative">
+      <IntroSection
+        heading={slice.primary.heading}
+        description={slice.primary.description}
+      />
 
-      {isFilled.richText(slice.primary.description) && (
-        // <PrismicRichText field={slice.primary.description} />
-        <PrismicRichText
-          field={slice.primary.description}
-          components={{
-            paragraph: ({ children }) => (
-              <p className="text-text-secondary xs:text-xl max-w-2/3 text-base font-light md:text-lg">
-                {children}
-              </p>
-            ),
-          }}
+      <section ref={cardsSectionRef} className="cards cards-gradient">
+        {slice.primary.project.map((card, index) => (
+          <ProjectCard
+            key={card.project_title || index}
+            card={card}
+            index={index}
+            isFirst={index === 0}
+            scrollHintRef={index === 0 ? scrollHintRef : null}
+            refs={cardRefs[index]}
+          />
+        ))}
+
+        <ProgressBar
+          ref={progressBarRef}
+          innerRef={progressBarInnerRef}
+          progress={cardProgressRef.current}
+          isLastCardVisible={isLastCardVisible}
+          isInNextSection={isInNextSection}
         />
-      )}
-    </Bounded>
+      </section>
+
+      <OutroSection />
+    </div>
   );
 };
 
-export default ProjectOverviewCard;
+export default ProjectOverviewCards;

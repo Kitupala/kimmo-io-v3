@@ -94,6 +94,13 @@
                   "allowText": true,
                   "repeat": false
                 }
+              },
+              "marquee": {
+                "type": "Text",
+                "config": {
+                  "label": "Marquee",
+                  "placeholder": ""
+                }
               }
             }
           }
