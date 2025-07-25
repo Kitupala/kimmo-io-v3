@@ -1,21 +1,12 @@
 import * as React from "react";
 
 interface LogoProps extends React.SVGProps<SVGSVGElement> {
-  width?: number | string;
-  height?: number | string;
   fill?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({
-  width = 77,
-  height = 16,
-  fill = "#CDCDCD",
-  ...props
-}) => (
+const Logo: React.FC<LogoProps> = ({ fill = "#CDCDCD", ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
     fill="none"
     viewBox="0 0 77 16"
     {...props}

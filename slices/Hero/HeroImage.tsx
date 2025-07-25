@@ -143,11 +143,12 @@ const HeroImage = () => {
           alt="hero image"
           fill
           sizes="(max-width: 768px) 360px, 480px, 594px"
+          priority={true}
         />
       </div>
 
       {/* HORIZONTAL LINES */}
-      <div className="xs:mt-[380px] xs:gap-42 absolute mt-[270px] flex flex-col items-center gap-32 md:mt-[470px] md:gap-50">
+      <div className="xs:mt-[380px] xs:gap-42 md:gap-50 absolute mt-[270px] flex flex-col items-center gap-32 md:mt-[470px]">
         <div ref={line1Ref} className="bg-grid-line h-[1px]" />
         <div ref={line2Ref} className="bg-grid-line h-[1px]" />
       </div>
