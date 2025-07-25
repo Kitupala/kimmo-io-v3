@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useRef, ReactNode, ElementType } from "react";
+import React, { ElementType, ReactNode, useRef } from "react";
+
 import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/app/lib/utils";
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 interface AnimatedTextProps<T extends ElementType = "div"> {
   as?: T;
@@ -21,6 +23,14 @@ interface AnimatedTextProps<T extends ElementType = "div"> {
   ease?: string;
   lineHeight?: string | number;
   gradient?: boolean;
+  animateOnScroll?: boolean;
+  scrollTriggerOptions?: {
+    start?: string;
+    end?: string;
+    once?: boolean;
+    markers?: boolean;
+    toggleActions?: string;
+  };
   [key: string]: unknown;
 }
 
@@ -37,11 +47,19 @@ function AnimatedText<T extends ElementType = "div">({
   ease = "power2.out",
   lineHeight = 1.4,
   gradient = false,
+  animateOnScroll = false,
+  scrollTriggerOptions = {
+    start: "top bottom",
+    once: true,
+    markers: false,
+    toggleActions: "play none none none",
+  },
   ...rest
 }: AnimatedTextProps<T>) {
   const Component = as || "div";
   const textRef = useRef<HTMLDivElement | null>(null);
   const splitInstance = useRef<SplitText | null>(null);
+  const timeline = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(
     () => {
@@ -53,7 +71,11 @@ function AnimatedText<T extends ElementType = "div">({
         effectiveSplitType = "lines";
       }
 
-      const tl = gsap.timeline({ delay });
+      // Create the timeline
+      const tl = gsap.timeline({
+        paused: animateOnScroll, // Pause if using scroll trigger
+      });
+      timeline.current = tl;
 
       // For block animation, animate the container directly
       if (effectiveSplitType === "block") {
@@ -78,6 +100,7 @@ function AnimatedText<T extends ElementType = "div">({
         splitInstance.current = new SplitText(textRef.current, {
           type: effectiveSplitType,
         });
+
         const elements = splitInstance.current[effectiveSplitType];
 
         gsap.set(elements, {
@@ -108,9 +131,33 @@ function AnimatedText<T extends ElementType = "div">({
         });
       }
 
+      // If using scroll trigger, set it up here
+      if (animateOnScroll) {
+        ScrollTrigger.create({
+          trigger: textRef.current,
+          start: scrollTriggerOptions.start || "top bottom",
+          end: scrollTriggerOptions.end || "bottom top",
+          once: scrollTriggerOptions.once || false,
+          markers: scrollTriggerOptions.markers || false,
+          toggleActions:
+            scrollTriggerOptions.toggleActions || "play none none none",
+          animation: tl,
+        });
+      } else {
+        // If not using scroll trigger, play the timeline immediately with delay
+        tl.delay(delay).play();
+      }
+
       return () => {
         tl.kill();
         splitInstance.current?.revert();
+        if (animateOnScroll) {
+          ScrollTrigger.getAll().forEach((st) => {
+            if (st.vars.trigger === textRef.current) {
+              st.kill();
+            }
+          });
+        }
       };
     },
     {
@@ -124,6 +171,8 @@ function AnimatedText<T extends ElementType = "div">({
         blur,
         ease,
         gradient,
+        animateOnScroll,
+        JSON.stringify(scrollTriggerOptions),
       ],
       scope: textRef,
     },

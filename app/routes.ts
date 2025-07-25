@@ -1,14 +1,14 @@
 export const routes = [
   {
-    title: "About",
-    href: "/",
+    title: "Work",
+    href: "/#work",
   },
   {
     title: "Studies",
-    href: "/studies",
+    href: "/#studies",
   },
   {
     title: "Abilities",
-    href: "/abilities",
+    href: "/#abilities",
   },
 ];

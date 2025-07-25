@@ -308,6 +308,16 @@ export interface ProjectOverviewCardSliceDefaultPrimaryProjectItem {
     prismic.FieldState,
     never
   >;
+
+  /**
+   * Marquee field in *ProjectOverviewCards → Default → Primary → Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_overview_card.default.primary.project[].marquee
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  marquee: prismic.KeyTextField;
 }
 
 /**
