@@ -1,6 +1,13 @@
 import gsap from "gsap";
 import type { CardContent } from "../types";
 
+// Configure GSAP to handle transforms consistently
+gsap.config({
+  force3D: true,
+  autoSleep: 60,
+  nullTargetWarn: false,
+});
+
 export const animateContentIn = (elements: CardContent) => {
   const {
     eyebrow,
