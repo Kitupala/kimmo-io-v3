@@ -36,7 +36,7 @@ const Header = () => {
       }
     };
 
-    const intervalId = setInterval(checkInactivity, 1000);
+    const intervalId = setInterval(checkInactivity, 500);
 
     return () => clearInterval(intervalId);
   }, [isNavVisible, currentScrollY]);
@@ -99,7 +99,7 @@ const Header = () => {
   return (
     <div ref={containerRef} className="xs:top-3 fixed inset-x-0 top-2 z-40">
       <div className="xs:px-4 mx-auto w-full max-w-[1000px] px-2">
-        <header className="bg-background/30 border-grid-line xs:px-8 xs:py-4 relative z-30 overflow-x-hidden rounded-xl border px-4 py-3 backdrop-blur-md">
+        <header className="bg-background/30 border-grid-line xs:px-8 xs:py-4 relative z-30 rounded-xl border px-4 py-3 backdrop-blur-md">
           <div className="mx-auto flex items-center justify-between">
             <Link
               href="/"
@@ -115,7 +115,7 @@ const Header = () => {
                 }
               }}
             >
-              <Logo fill="#d0d6e0" />
+              <Logo className="w-[60px] sm:w-[75px]" fill="#d0d6e0" />
             </Link>
 
             <NavMobile />

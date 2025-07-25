@@ -126,13 +126,9 @@ const NavMobile = () => {
       </div>
 
       {shouldRender && (
-        // <div
-        //   ref={animContainerRef}
-        //   className="border-grid-line bg-background fixed inset-0 top-0 z-40 mx-2 rounded-lg border sm:mx-4 lg:hidden"
-        // >
         <div
           ref={animContainerRef}
-          className="border-grid-line bg-background fixed top-0 right-2 left-2 z-40 rounded-lg border sm:right-4 sm:left-4 lg:hidden"
+          className="border-grid-line bg-background fixed left-2 right-2 top-0 z-40 rounded-lg border sm:left-4 sm:right-4 lg:hidden"
         >
           <div className="mt-28 p-6">
             <ul className="flex flex-col space-y-4">

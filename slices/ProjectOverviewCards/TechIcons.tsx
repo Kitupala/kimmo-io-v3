@@ -101,7 +101,10 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
     .filter((tech) => iconMap[tech]);
 
   return (
-    <div ref={containerRef} className={cn("flex flex-wrap gap-6", classNames)}>
+    <div
+      ref={containerRef}
+      className={cn("flex flex-wrap gap-4 md:gap-6", classNames)}
+    >
       {techArray.map((tech, index) => {
         const iconUrl = iconMap[tech];
         const displayName = displayNameMap[tech] || tech;
@@ -120,7 +123,7 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
                 alt={displayName}
                 width={24}
                 height={24}
-                className="size-6 object-contain lg:size-9"
+                className="size-5 object-contain md:size-6 lg:size-9"
               />
 
               {activeTooltip === tech && (

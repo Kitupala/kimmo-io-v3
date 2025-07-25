@@ -46,7 +46,7 @@ const ScrollHint = () => {
         ref={lineRef}
         className="bg-text-tertiary mr-2.5 h-0 w-px self-start"
       />
-      <div className="mt-1 h-10 self-start opacity-80">
+      <div className="w-18 mt-1 h-10 self-start opacity-80 md:w-24">
         <Image
           src="/assets/images/scrolltoexplore_bebas.svg"
           height={40}
