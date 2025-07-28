@@ -63,94 +63,102 @@ function AnimatedText<T extends ElementType = "div">({
 
   useGSAP(
     () => {
-      if (!textRef.current) return;
-
-      // If gradient is provided and not in block mode, always use lines for split type
-      let effectiveSplitType = splitType;
-      if (gradient && splitType !== "block") {
-        effectiveSplitType = "lines";
-      }
-
-      // Create the timeline
-      const tl = gsap.timeline({
-        paused: animateOnScroll, // Pause if using scroll trigger
-      });
-      timeline.current = tl;
-
-      // For block animation, animate the container directly
-      if (effectiveSplitType === "block") {
-        gsap.set(textRef.current, {
-          opacity: 0,
-          y,
-          filter: `blur(${blur}px)`,
-        });
-
-        tl.to(textRef.current, {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration,
-          ease,
-        });
-
-        if (gradient) {
-          textRef.current.classList.add("text-gradient");
+      const setupAnimation = () => {
+        if (!textRef.current) return;
+        // If gradient is provided and not in block mode, always use lines for split type
+        let effectiveSplitType = splitType;
+        if (gradient && splitType !== "block") {
+          effectiveSplitType = "lines";
         }
-      } else {
-        splitInstance.current = new SplitText(textRef.current, {
-          type: effectiveSplitType,
+
+        const tl = gsap.timeline({
+          paused: animateOnScroll,
         });
+        timeline.current = tl;
 
-        const elements = splitInstance.current[effectiveSplitType];
+        // For block animation, animate the container directly
+        if (effectiveSplitType === "block") {
+          gsap.set(textRef.current, {
+            opacity: 0,
+            y,
+            filter: `blur(${blur}px)`,
+          });
 
-        gsap.set(elements, {
-          opacity: 0,
-          y,
-          filter: `blur(${blur}px)`,
-        });
+          tl.to(textRef.current, {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration,
+            ease,
+          });
 
-        if (
-          gradient &&
-          Array.isArray(elements) &&
-          effectiveSplitType === "lines"
-        ) {
-          elements.forEach((line: Element) => {
-            if (line instanceof HTMLElement) {
-              line.classList.add("text-gradient");
-            }
+          if (gradient) {
+            textRef.current.classList.add("text-gradient");
+          }
+        } else {
+          splitInstance.current = new SplitText(textRef.current, {
+            type: effectiveSplitType,
+          });
+
+          const elements = splitInstance.current[effectiveSplitType];
+
+          gsap.set(elements, {
+            opacity: 0,
+            y,
+            filter: `blur(${blur}px)`,
+          });
+
+          if (
+            gradient &&
+            Array.isArray(elements) &&
+            effectiveSplitType === "lines"
+          ) {
+            elements.forEach((line: Element) => {
+              if (line instanceof HTMLElement) {
+                line.classList.add("text-gradient");
+              }
+            });
+          }
+
+          tl.to(elements, {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration,
+            stagger,
+            ease,
           });
         }
 
-        tl.to(elements, {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration,
-          stagger,
-          ease,
-        });
-      }
+        // If using scroll trigger, set it up here
+        if (animateOnScroll) {
+          ScrollTrigger.refresh();
 
-      // If using scroll trigger, set it up here
-      if (animateOnScroll) {
-        ScrollTrigger.create({
-          trigger: textRef.current,
-          start: scrollTriggerOptions.start || "top bottom",
-          end: scrollTriggerOptions.end || "bottom top",
-          once: scrollTriggerOptions.once || false,
-          markers: scrollTriggerOptions.markers || false,
-          toggleActions:
-            scrollTriggerOptions.toggleActions || "play none none none",
-          animation: tl,
-        });
-      } else {
-        // If not using scroll trigger, play the timeline immediately with delay
-        tl.delay(delay).play();
+          ScrollTrigger.create({
+            trigger: textRef.current,
+            start: scrollTriggerOptions.start || "top bottom",
+            end: scrollTriggerOptions.end || "bottom top",
+            once: scrollTriggerOptions.once || false,
+            markers: scrollTriggerOptions.markers || false,
+            toggleActions:
+              scrollTriggerOptions.toggleActions || "play none none none",
+            animation: tl,
+            invalidateOnRefresh: true,
+          });
+        } else {
+          // If not using scroll trigger, play the timeline immediately with delay
+          tl.delay(delay).play();
+        }
+      };
+
+      // Use a small timeout to ensure the DOM is fully rendered in production
+      if (typeof window !== "undefined") {
+        setTimeout(setupAnimation, 100);
       }
 
       return () => {
-        tl.kill();
-        splitInstance.current?.revert();
+        if (timeline.current) timeline.current.kill();
+        if (splitInstance.current) splitInstance.current.revert();
         if (animateOnScroll) {
           ScrollTrigger.getAll().forEach((st) => {
             if (st.vars.trigger === textRef.current) {
