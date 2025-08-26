@@ -53,7 +53,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 field={card.project_image}
                 alt=""
                 quality={90}
-                className="object-cover will-change-transform"
+                className="grayscale-25 object-cover will-change-transform"
                 priority={index === 0}
               />
             </div>

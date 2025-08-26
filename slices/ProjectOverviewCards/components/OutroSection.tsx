@@ -1,12 +1,45 @@
-import React from "react";
+import AnimatedText from "@/app/components/AnimatedText";
+import Image from "next/image";
 
 const OutroSection = () => {
+  const content = (
+    <>
+      <span>This is just the spark — </span>
+      <span>
+        the full explosion of code and chaos lives on my <b>GitHub</b>.
+      </span>
+    </>
+  );
+
   return (
-    <section id="studies" className="outro">
-      <h3 className="text-text-secondary w-1/2 pt-48 text-center text-xl leading-tight tracking-tighter sm:text-4xl">
-        This is just the spark — the full explosion of code and chaos lives on
-        my GitHub.
-      </h3>
+    <section id="studies" className="outro relative overflow-hidden">
+      <div className="absolute -bottom-12 left-20 -z-10 h-[70%] w-full overflow-hidden mix-blend-exclusion">
+        <Image
+          src="/assets/images/chaos.jpg"
+          alt=""
+          fill
+          priority
+          className="mask-bottom mask-top object-cover object-left opacity-30"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto w-4/5 pt-32 text-center md:w-2/5">
+        <AnimatedText
+          as="h3"
+          className="text-text-secondary kerning-none text-xl leading-tight tracking-tighter sm:text-3xl"
+          splitType="words"
+          stagger={0.05}
+          duration={0.8}
+          y={10}
+          animateOnScroll={true}
+          scrollTriggerOptions={{
+            start: "top bottom-=100",
+            once: true,
+          }}
+        >
+          {content}
+        </AnimatedText>
+      </div>
     </section>
   );
 };

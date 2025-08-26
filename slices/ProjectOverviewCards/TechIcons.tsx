@@ -62,7 +62,7 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
     tailwindcss: "/assets/icons/tailwindcss.svg",
     threejs: "/assets/icons/threejs.svg",
     typescript: "/assets/icons/typescript.svg",
-    vapi_ai: "/assets/icons/vapi.png",
+    vapi_ai: "/assets/icons/vapi.svg",
     vercel: "/assets/icons/vercel.svg",
   };
 

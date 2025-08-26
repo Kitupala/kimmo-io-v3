@@ -97,32 +97,33 @@ const Header = () => {
   );
 
   return (
-    <div ref={containerRef} className="xs:top-3 fixed inset-x-0 top-2 z-40">
-      <div className="xs:px-4 mx-auto w-full max-w-[1000px] px-2">
-        <header className="bg-background/30 border-grid-line xs:px-8 xs:py-4 relative z-30 rounded-xl border px-4 py-3 backdrop-blur-md">
-          <div className="mx-auto flex items-center justify-between">
-            <Link
-              href="/"
-              className="relative z-50 py-4"
-              onClick={(e) => {
-                if (lenis) {
-                  e.preventDefault();
-                  lenis.scrollTo(0, {
-                    duration: 2.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                  });
-                  window.history.pushState(null, "", "/");
-                }
-              }}
-            >
-              <Logo className="w-[60px] sm:w-[75px]" fill="#d0d6e0" />
-            </Link>
+    <div
+      ref={containerRef}
+      className="xs:top-3 fixed inset-x-0 top-2 z-40 mx-auto max-w-[1000px] px-2 backdrop-blur-sm lg:px-0"
+    >
+      <header className="bg-background/30 border-grid-line xs:px-8 xs:py-4 relative z-30 rounded-xl border px-4 py-3">
+        <div className="mx-auto flex items-center justify-between">
+          <Link
+            href="/"
+            className="relative z-50 py-4"
+            onClick={(e) => {
+              if (lenis) {
+                e.preventDefault();
+                lenis.scrollTo(0, {
+                  duration: 2.2,
+                  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                });
+                window.history.pushState(null, "", "/");
+              }
+            }}
+          >
+            <Logo className="w-[60px] sm:w-[75px]" fill="#d0d6e0" />
+          </Link>
 
-            <NavMobile />
-            <NavDesktop />
-          </div>
-        </header>
-      </div>
+          <NavMobile />
+          <NavDesktop />
+        </div>
+      </header>
     </div>
   );
 };
