@@ -23,6 +23,18 @@ export const everett = localFont({
   variable: "--font-everett",
 });
 
+export const digital = localFont({
+  src: [
+    {
+      path: "../public/fonts/digital-7/digital-7.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-digital",
+});
+
 export const robotoMono = Roboto_Mono({
   subsets: ["latin"],
   display: "swap",

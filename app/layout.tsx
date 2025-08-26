@@ -1,6 +1,6 @@
 import React from "react";
 import "@/app/globals.css";
-import { everett, robotoMono } from "./fonts";
+import { everett, robotoMono, digital } from "./fonts";
 
 import type { Metadata } from "next";
 import { PrismicPreview } from "@prismicio/next";
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${everett.variable} ${robotoMono.variable} antialiased`}
+        className={`${everett.variable} ${robotoMono.variable} ${digital.variable} antialiased`}
       >
         <LenisProvider>{children}</LenisProvider>
       </body>
