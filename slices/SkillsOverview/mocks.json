@@ -1,0 +1,106 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"skills": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "got",
+									"type": "Text"
+								}
+							],
+							[
+								"score",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "7",
+									"type": "Number"
+								}
+							]
+						]
+					}
+				]
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Quite"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Id minim tempor duis sunt adipisicing laboris excepteur. Magna ipsum dolor adipisicing esse dolore veniam magna eiusmod id magna ipsum proident. Anim quis sunt ut laborum do consequat."
+						}
+					}
+				]
+			},
+			"about_subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Weight"
+						}
+					}
+				]
+			},
+			"about_subsection": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Culpa exercitation anim occaecat commodo amet aliqua culpa eiusmod et eu laborum culpa incididunt."
+						}
+					}
+				]
+			},
+			"ss_subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Receive"
+						}
+					}
+				]
+			},
+			"ss_subsection": {
+				"__TYPE__": "FieldContent",
+				"value": "muscle",
+				"type": "Text"
+			},
+			"ss_sub_subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading5",
+						"content": {
+							"text": "Stepped"
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

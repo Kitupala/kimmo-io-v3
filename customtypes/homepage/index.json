@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "skills_overview": {
+              "type": "SharedSlice"
+            },
             "project_overview_card": {
               "type": "SharedSlice"
             },

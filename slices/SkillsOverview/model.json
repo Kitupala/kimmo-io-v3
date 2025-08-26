@@ -1,0 +1,99 @@
+{
+  "type": "SharedSlice",
+  "id": "skills_overview",
+  "name": "SkillsOverview",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard layout for displaying overview of skills with descriptions and proficiency indicators.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2,heading3"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "skills": {
+          "type": "Group",
+          "config": {
+            "label": "Skills",
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Skill Name"
+                }
+              },
+              "score": {
+                "type": "Number",
+                "config": {
+                  "label": "Proficiency Score"
+                }
+              }
+            }
+          }
+        },
+        "about_subheading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "About Subheading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading4"
+          }
+        },
+        "about_subsection": {
+          "type": "StructuredText",
+          "config": {
+            "label": "About Subsection",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,strong"
+          }
+        },
+        "ss_subheading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "SS Subheading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading4"
+          }
+        },
+        "ss_sub_subheading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "SS Sub Subheading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading5"
+          }
+        },
+        "ss_subsection": {
+          "type": "Text",
+          "config": {
+            "label": "SS Subsection",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
