@@ -1,14 +1,8 @@
 "use client";
 
 import React, { ElementType, ReactNode, useRef } from "react";
-
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP, SplitText, ScrollTrigger } from "@/app/lib/gsap";
 import { cn } from "@/app/lib/utils";
-
-gsap.registerPlugin(SplitText, ScrollTrigger);
 
 interface AnimatedTextProps<T extends ElementType = "div"> {
   as?: T;

@@ -1,10 +1,5 @@
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, SplitText } from "@/app/lib/gsap";
 import type { CardRefs } from "../types";
-
-gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollTrigger);
 
 export const setupInitialStyles = ({
   cardRefs,

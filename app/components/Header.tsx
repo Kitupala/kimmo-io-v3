@@ -8,11 +8,8 @@ import Logo from "@/app/components/Logo";
 import NavMobile from "@/app/components/NavMobile";
 import NavDesktop from "@/app/components/NavDesktop";
 
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 import useLenis from "@/app/hooks/useLenis";
-
-gsap.registerPlugin(useGSAP);
 
 const Header = () => {
   const lenis = useLenis();
@@ -21,17 +18,23 @@ const Header = () => {
 
   const [isInitialized, setIsInitialized] = useState(false);
   const [isNavVisible, setIsNavVisible] = useState(true);
+  const [isMouseOver, setIsMouseOver] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const { y: currentScrollY } = useWindowScroll();
 
-  // Check for inactivity every second
+  // Check for inactivity
   useEffect(() => {
     const checkInactivity = () => {
       const now = Date.now();
       const inactiveTime = now - lastActivityRef.current;
 
-      if (inactiveTime >= 1500 && isNavVisible && currentScrollY > 50) {
+      if (
+        inactiveTime >= 1500 &&
+        isNavVisible &&
+        currentScrollY > 50 &&
+        !isMouseOver
+      ) {
         setIsNavVisible(false);
       }
     };
@@ -39,12 +42,12 @@ const Header = () => {
     const intervalId = setInterval(checkInactivity, 500);
 
     return () => clearInterval(intervalId);
-  }, [isNavVisible, currentScrollY]);
+  }, [isNavVisible, currentScrollY, isMouseOver]);
 
   useEffect(() => {
     lastActivityRef.current = Date.now();
 
-    if (currentScrollY === 0) {
+    if (currentScrollY === 0 || isMouseOver) {
       setIsNavVisible(true);
     } else if (currentScrollY > lastScrollY) {
       setIsNavVisible(false);
@@ -52,7 +55,7 @@ const Header = () => {
       setIsNavVisible(true);
     }
     setLastScrollY(currentScrollY);
-  }, [currentScrollY, lastScrollY]);
+  }, [currentScrollY, lastScrollY, isMouseOver]);
 
   // Initial page load animation
   useEffect(() => {
@@ -96,12 +99,23 @@ const Header = () => {
     { dependencies: [isNavVisible, isInitialized], scope: containerRef },
   );
 
+  const handleMouseEnter = () => {
+    setIsMouseOver(true);
+    setIsNavVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsMouseOver(false);
+  };
+
   return (
     <div
       ref={containerRef}
-      className="xs:top-3 fixed inset-x-0 top-2 z-40 mx-auto max-w-[1000px] px-2 backdrop-blur-sm lg:px-0"
+      className="fixed inset-x-0 top-2 z-40 mx-auto max-w-[1000px] px-2 backdrop-blur-sm xs:top-3 lg:px-0"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <header className="bg-background/30 border-grid-line xs:px-8 xs:py-4 relative z-30 rounded-xl border px-4 py-3">
+      <header className="relative z-30 rounded-xl border border-grid-line bg-background/30 px-4 py-3 xs:px-8 xs:py-4">
         <div className="mx-auto flex items-center justify-between">
           <Link
             href="/"

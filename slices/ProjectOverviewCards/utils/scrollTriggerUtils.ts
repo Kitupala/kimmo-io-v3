@@ -1,11 +1,8 @@
 import React from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/app/lib/gsap";
 import type { CardRefs } from "../types";
 import { animateContentIn, animateContentOut } from "./animationUtils";
 import { getCardElements } from "./cardUtils";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface CreateScrollTriggersProps {
   cards: HTMLElement[];

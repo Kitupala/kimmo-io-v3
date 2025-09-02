@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { gsap, useGSAP, ScrollTrigger } from "@/app/lib/gsap";
 import { cn } from "@/app/lib/utils";
 import { NumberField } from "@prismicio/client";
 
@@ -23,9 +21,8 @@ interface ProficiencyMeterProps {
   delay?: number;
   useGradient?: boolean;
   gradientStops?: GradientStop[];
+  id?: string;
 }
-
-gsap.registerPlugin(ScrollTrigger);
 
 const ProficiencyMeter: React.FC<ProficiencyMeterProps> = ({
   score,
@@ -42,6 +39,7 @@ const ProficiencyMeter: React.FC<ProficiencyMeterProps> = ({
     { offset: "25%", color: "rgba(208, 214, 224, 0.8)" },
     { offset: "100%", color: "rgba(72, 79, 86, 0.2)" },
   ],
+  id,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<SVGCircleElement>(null);
@@ -53,7 +51,7 @@ const ProficiencyMeter: React.FC<ProficiencyMeterProps> = ({
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const center = size / 2;
-  const gradientId = `proficiency-gradient-${Math.random().toString(36).substring(2, 9)}`;
+  const gradientId = `proficiency-gradient-${id || `skill-${score}`}`;
 
   useGSAP(() => {
     if (!circleRef.current || !textRef.current || !containerRef.current) return;
