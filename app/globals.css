@@ -2,7 +2,8 @@
 
 :root {
   --background: #08090a;
-  --foreground: #ededed;;
+  --foreground: #ededed;
+
   /*--grid-line: rgba(234, 94, 94, 0.6);*/
 
   --grid-line: rgba(159, 159, 173, 0.08);
@@ -30,37 +31,44 @@
   --color-text-quaternary: #62666d;
   --color-text-accent: var(--color-text-accent);
 
-  --font-everett: var(--font-everett);
-  --font-roboto-mono: var(--font-roboto-mono);
-  --font-digital: var(--font-digital);
+  --font-everett: var(--font-everett), system-ui, sans-serif;
+  --font-roboto-mono: var(--font-roboto-mono), monospace;
+  --font-digital: var(--font-digital), monospace;
 
   --breakpoint-xs: 31rem;
   --ease-in-out-quad: cubic-bezier(0.455,0.03,0.515,0.955);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-everett), system-ui, sans-serif;
+@layer base {
+  body {
+    @apply bg-background text-foreground font-everett;
+  }
+  button, a {
+    @apply cursor-none;
+  }
 }
 
 @layer components {
   .nav-link {
     @apply font-roboto-mono uppercase text-text-primary text-xs;
   }
+
+  .nav-link-wrap {
+    @apply block relative overflow-hidden leading-5;
+  }
+
+  .nav-link-text {
+    @apply block will-change-transform translate-y-0;
+  }
+
+  .nav-link-text:nth-child(2) {
+    @apply absolute left-0 top-full;
+  }
 }
 
 @layer utilities {
   .text-gradient {
     @apply  bg-gradient-to-br from-text-primary from-25% to-text-tertiary bg-clip-text text-transparent;
-  }
-
-  .font-roboto-mono {
-    font-family: var(--font-roboto-mono), monospace;
-  }
-
-  .font-digital {
-    font-family: var(--font-digital), monospace;
   }
 
   .fade-stripe {
@@ -83,60 +91,12 @@ body {
   }
 
 
-  .intro-gradient {
-    background-image: linear-gradient(
-            180deg,
-            rgba(97, 106, 115, 0.02) 0%,
-            rgba(97, 106, 115, 0.08) 100%
-    );
-  }
-
-  .cards-gradient {
-    background-image: linear-gradient(
-            180deg,
-            rgba(97, 106, 115, 0.08) 0%,
-            rgba(97, 106, 115, 0.1) 75%,
-            transparent 100%
-    );
-  }
-
-  .outro-gradient {
-    background-image: linear-gradient(
-            180deg,
-            rgba(97, 106, 115, 0.1) 75%,
-            rgba(97, 106, 115, 0.08) 0%,
-
-    );
-  }
-
-  .mask-top {
-    @apply mask-alpha mask-t-from-black mask-t-from-30% mask-t-to-transparent;
-  }
-
-  .mask-bottom {
-    @apply mask-alpha mask-b-from-black mask-b-from-50% mask-b-to-transparent;
-  }
-
-
   .card:nth-child(2) {
     @apply mt-[50vh];
   }
 
-  .will-change-filter {
-    @apply will-change-[filter];
-  }
-
   .kerning-none {
     font-kerning: none;
-  }
-
-  .border-container {
-    position: relative;
-  }
-
-  .border-container::before {
-    @apply absolute -inset-[4px] -z-10 rounded-xl border border-grid-line/80 w-auto max-w-[1000px] lg:mx-auto bg-background xs:-inset-[5px];
-    content: "";
   }
 }
 
@@ -203,8 +163,7 @@ section .intro, section .cards, section .outro {
 }
 
 .card-details {
-  @apply flex flex-col z-10 p-6 md:p-12 rounded-2xl;
-  border: 1px solid transparent;
+  @apply flex flex-col z-10 p-6 md:p-12 rounded-2xl border border-transparent;
   background-image:
           linear-gradient(rgba(8, 9, 10, 0.7), rgba(8, 9, 10, 0.8)),
           linear-gradient(to bottom right, var(--color-background), var(--color-grid-line-bright));
@@ -224,22 +183,14 @@ section .intro, section .cards, section .outro {
   @apply w-full mb-8 md:mb-12 translate-x-10 opacity-0 text-text-secondary text-sm md:text-lg;
 }
 
-.card-actions a.project-link {
-  @apply text-text-primary/70 hover:text-text-primary flex items-center gap-2 text-xs font-light transition-colors;
-}
-
-.char {
+.card-details .char {
   @apply relative overflow-hidden inline-block;
 }
 
-.char span {
+.card-details .char span {
   @apply translate-x-full inline-block will-change-transform;
 }
 
-.progress-hidden {
-  opacity: 0;
-}
-
-.scroll-progress {
-  transition: opacity 0.5s ease;
+.card-actions a.project-link {
+  @apply text-text-primary/70 hover:text-text-primary flex items-center gap-2 text-xs font-light transition-colors;
 }

@@ -58,7 +58,10 @@ const ProjectOverviewCards: FC<ProjectOverviewCardProps> = ({ slice }) => {
         description={slice.primary.description}
       />
 
-      <section ref={cardsSectionRef} className="cards cards-gradient">
+      <section
+        ref={cardsSectionRef}
+        className="cards bg-[linear-gradient(180deg,rgba(97,106,115,0.08)_0%,rgba(97,106,115,0.1)_75%,transparent_100%)]"
+      >
         {slice.primary.project.map((card, index) => (
           <ProjectCard
             key={card.project_title || index}

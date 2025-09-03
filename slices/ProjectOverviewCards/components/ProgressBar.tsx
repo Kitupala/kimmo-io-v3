@@ -12,17 +12,17 @@ const ProgressBar = ({
     <div
       ref={ref}
       className={cn(
-        "scroll-progress bg-grid-line-bright w-46 z-50 h-[1px] overflow-hidden rounded-full transition-none",
+        "z-50 h-px w-46 overflow-hidden rounded-full bg-grid-line-bright transition-opacity transition-none duration-500 ease-in-out",
         isLastCardVisible && !isInNextSection
-          ? "right-18 fixed bottom-16"
+          ? "fixed right-18 bottom-16"
           : isInNextSection
-            ? "right-18 -bottom-23.5 absolute"
-            : "right-18 fixed bottom-16",
+            ? "absolute right-18 -bottom-23.5"
+            : "fixed right-18 bottom-16",
       )}
     >
       <div
         ref={innerRef}
-        className="bg-text-accent h-full"
+        className="h-full bg-text-accent"
         style={{ width: `${progress * 100}%` }}
       />
     </div>
@@ -30,43 +30,3 @@ const ProgressBar = ({
 };
 
 export default ProgressBar;
-
-// components/ProgressBar.tsx
-// import React, { forwardRef } from "react";
-// import { cn } from "@/app/lib/utils";
-// import { ProgressBarProps } from "../types";
-//
-// const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
-//   ({ progress, isLastCardVisible, isInNextSection, innerRef }, ref) => {
-//     console.log("ProgressBar rendered:", {
-//       progress,
-//       isLastCardVisible,
-//       isInNextSection,
-//     });
-//
-//     return (
-//       <div
-//         ref={ref}
-//         className={cn(
-//           "scroll-progress bg-grid-line z-40 h-[1px] w-36 overflow-hidden rounded-full backdrop-blur-md transition-none",
-//           isLastCardVisible && !isInNextSection
-//             ? "fixed bottom-20 right-20"
-//             : isInNextSection
-//               ? "absolute -bottom-20 right-20"
-//               : "fixed bottom-20 right-20 opacity-0", // Ensure visibility
-//         )}
-//         style={{ background: "rgba(255, 0, 0, 0.3)" }} // Temporary debugging style
-//       >
-//         <div
-//           ref={innerRef}
-//           className="bg-foreground h-full"
-//           style={{ width: `${progress * 100}%` }}
-//         />
-//       </div>
-//     );
-//   },
-// );
-//
-// ProgressBar.displayName = "ProgressBar";
-//
-// export default ProgressBar;

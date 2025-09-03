@@ -15,7 +15,7 @@ const SkillsOverview: FC<SkillsOverviewProps> = ({ slice }) => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="outro-gradient flex flex-col items-center space-y-10 pt-[10%]"
+      className="flex flex-col items-center space-y-10 pt-[10%]"
     >
       <SkillsHeader heading={slice.primary.heading} body={slice.primary.body} />
       <SkillsGrid skills={slice.primary.skills} />

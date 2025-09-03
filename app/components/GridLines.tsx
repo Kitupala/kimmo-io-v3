@@ -79,7 +79,7 @@ export default function GridLines() {
                   linesRef.current[i] = el;
                 }}
                 className={cn(
-                  "will-change-filter h-screen w-px bg-grid-line",
+                  "h-screen w-px bg-grid-line will-change-[filter]",
                   `${i === 0 || i === 4 ? "max-[970px]:hidden" : ""}`,
                 )}
               />
