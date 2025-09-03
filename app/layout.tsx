@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 
 import { PrismicPreview } from "@prismicio/next";
 import "mouse-follower/dist/mouse-follower.min.css";
-
 import "@/app/globals.css";
+
 import { repositoryName } from "@/prismicio";
 import { everett, robotoMono, digital } from "./fonts";
 
