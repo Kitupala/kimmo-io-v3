@@ -120,6 +120,7 @@ const Header = () => {
           <Link
             href="/"
             className="relative z-50 py-4"
+            data-cursor="-inverse"
             onClick={(e) => {
               if (lenis) {
                 e.preventDefault();
