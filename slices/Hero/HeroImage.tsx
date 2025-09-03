@@ -1,13 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 
 import Image from "next/image";
 import { BRIGHTNESS_DIM_SETTINGS } from "@/app/constants";
-
-gsap.registerPlugin(useGSAP);
 
 const HeroImage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -132,11 +129,11 @@ const HeroImage = () => {
       {/* CIRCLE BORDER */}
       <div
         ref={circleRef}
-        className="border-grid-line xs:h-[480px] xs:w-[480px] xs:mt-4 absolute -z-20 h-[360px] w-[360px] rounded-full border md:h-[594px] md:w-[594px]"
+        className="absolute -z-20 h-[360px] w-[360px] rounded-full border border-grid-line xs:mt-4 xs:h-[480px] xs:w-[480px] md:h-[594px] md:w-[594px]"
       />
 
       {/* IMAGE CONTAINER */}
-      <div className="xs:h-[480px] xs:w-[480px] xs:mt-4 absolute -z-30 h-[360px] w-[360px] md:h-[594px] md:w-[594px]">
+      <div className="absolute -z-30 h-[360px] w-[360px] xs:mt-4 xs:h-[480px] xs:w-[480px] md:h-[594px] md:w-[594px]">
         <Image
           ref={imageRef}
           src="/assets/images/hero.svg"
@@ -148,9 +145,9 @@ const HeroImage = () => {
       </div>
 
       {/* HORIZONTAL LINES */}
-      <div className="xs:mt-[380px] xs:gap-42 md:gap-50 absolute mt-[270px] flex flex-col items-center gap-32 md:mt-[470px]">
-        <div ref={line1Ref} className="bg-grid-line h-[1px]" />
-        <div ref={line2Ref} className="bg-grid-line h-[1px]" />
+      <div className="absolute mt-[270px] flex flex-col items-center gap-32 xs:mt-[380px] xs:gap-42 md:mt-[470px] md:gap-50">
+        <div ref={line1Ref} className="h-[1px] bg-grid-line" />
+        <div ref={line2Ref} className="h-[1px] bg-grid-line" />
       </div>
     </div>
   );

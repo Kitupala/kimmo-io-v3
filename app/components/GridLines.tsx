@@ -2,12 +2,9 @@
 
 import * as React from "react";
 import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 import { cn } from "@/app/lib/utils";
 import { BRIGHTNESS_DIM_SETTINGS } from "@/app/constants";
-
-gsap.registerPlugin(useGSAP);
 
 export default function GridLines() {
   const linesRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -61,7 +58,7 @@ export default function GridLines() {
   return (
     <>
       {/* BLURRED TOP */}
-      <div className="xs:-top-[290px] xs:h-[700px] absolute -top-[280px] left-1/2 -z-10 h-[700px] w-screen max-w-[1150px] -translate-x-1/2 overflow-hidden md:-top-[480px] md:h-[1000px]">
+      <div className="absolute -top-[280px] left-1/2 -z-10 h-[700px] w-screen max-w-[1150px] -translate-x-1/2 overflow-hidden xs:-top-[290px] xs:h-[700px] md:-top-[480px] md:h-[1000px]">
         <div className="absolute h-full w-full">
           <TopBlur className="w-full" />
         </div>
@@ -72,7 +69,7 @@ export default function GridLines() {
         className="fixed top-0 left-0 -z-20 flex h-full w-screen flex-col items-center justify-items-center"
       >
         {/* VERTICAL LINES*/}
-        <div className="xs:gap-[185px] flex min-w-fit flex-row gap-[149px] md:gap-[229px]">
+        <div className="flex min-w-fit flex-row gap-[149px] xs:gap-[185px] md:gap-[229px]">
           {Array(5)
             .fill(null)
             .map((_, i) => (
@@ -82,7 +79,7 @@ export default function GridLines() {
                   linesRef.current[i] = el;
                 }}
                 className={cn(
-                  "bg-grid-line will-change-filter h-screen w-px",
+                  "h-screen w-px bg-grid-line will-change-[filter]",
                   `${i === 0 || i === 4 ? "max-[970px]:hidden" : ""}`,
                 )}
               />

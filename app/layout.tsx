@@ -1,12 +1,15 @@
 import React from "react";
+import type { Metadata } from "next";
+
+import { PrismicPreview } from "@prismicio/next";
+import "mouse-follower/dist/mouse-follower.min.css";
+
 import "@/app/globals.css";
+import { repositoryName } from "@/prismicio";
 import { everett, robotoMono, digital } from "./fonts";
 
-import type { Metadata } from "next";
-import { PrismicPreview } from "@prismicio/next";
-import { repositoryName } from "@/prismicio";
-
 import LenisProvider from "@/app/components/LenisProvider";
+import MouseCursorProvider from "@/app/components/MouseCursorProvider";
 
 export const metadata: Metadata = {
   title: "kimmo.io",
@@ -23,7 +26,9 @@ export default function RootLayout({
       <body
         className={`${everett.variable} ${robotoMono.variable} ${digital.variable} antialiased`}
       >
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          <MouseCursorProvider>{children}</MouseCursorProvider>
+        </LenisProvider>
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>

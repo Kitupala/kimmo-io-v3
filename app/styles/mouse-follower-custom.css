@@ -1,0 +1,68 @@
+.mf-cursor {
+    color: var(--color-grid-line-bright);
+}
+
+.mf-cursor:before {
+    top: -36px;
+    left: -36px;
+    width :72px;
+    height: 72px;
+}
+
+.mf-cursor.-inverse {
+    mix-blend-mode: difference;
+}
+
+.mf-cursor.-inverse:before {
+    background-color: white;
+    mix-blend-mode: difference;
+}
+
+.mf-cursor.-inverse .mf-cursor-inner {
+    background-color: white;
+}
+
+.mf-cursor.-pointer {
+    transform: scale(1.5);
+}
+
+.mf-cursor.-pointer:before {
+    transform:scale(0.4);
+}
+
+.mf-cursor.-text {
+    background-color: var(--color-text-accent);
+}
+
+.mf-cursor.-text:before {
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.mf-cursor.-icon:before {
+    transform: scale(0); /* Hide the default dot */
+}
+
+.mf-cursor-media {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    margin: -50px 0 0 10px;
+}
+
+.mf-cursor-media-box {
+    background-color: var(--color-grid-line-medium);
+    padding: 12px;
+    border: 1px solid var(--color-grid-line-medium);
+
+}
+
+.mf-cursor-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    filter: brightness(0) invert(1); /* Make SVG white */
+    border-radius: 0;
+    opacity: 0.4;
+}

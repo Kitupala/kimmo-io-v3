@@ -3,22 +3,30 @@ import { Content, isFilled } from "@prismicio/client";
 import { JSXMapSerializer, PrismicRichText } from "@prismicio/react";
 import AnimatedText from "@/app/components/AnimatedText";
 import { Glow, GlowArea } from "@/app/components/Glow";
+import Magnetic from "@/app/components/cursor/Magnetic";
 import Image from "next/image";
 import { cn } from "@/app/lib/utils";
 
 const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
   return (
-    <GlowArea className="my-22 divide-grid-line border-grid-line bg-background hero-gradient flex flex-col border-y sm:flex-row sm:divide-x">
+    <GlowArea className="hero-gradient my-22 flex flex-col divide-grid-line border-y border-grid-line bg-background sm:flex-row sm:divide-x">
       <div className="flex-3">
-        <div className="bg-background mask-bottom border-grid-line-medium size-30 absolute -right-4 -top-12 z-10 mt-6 rounded-full border p-1">
-          <Image
-            src="/assets/images/selfie.webp"
-            alt="Selfie"
-            width={200}
-            height={200}
-            className="mb-4 inline-block rounded-full opacity-65 mix-blend-plus-darker grayscale"
-          />
-        </div>
+        <Magnetic
+          strength={0.4}
+          className="absolute -top-12 -right-4 z-10 mt-6 size-30 rounded-full border border-grid-line-medium bg-background mask-b-from-60% p-1"
+          data-cursor="-hidden"
+        >
+          <div className="size-full overflow-hidden rounded-full">
+            <Image
+              src="/assets/images/selfie.webp"
+              alt="Selfie"
+              width={200}
+              height={200}
+              className="mb-4 inline-block size-full origin-center rounded-full opacity-65 mix-blend-plus-darker grayscale transition-all duration-200 hover:scale-110"
+            />
+          </div>
+        </Magnetic>
+
         <Glow className="m-1 mb-3 pt-12 after:inset-0 sm:px-12 sm:pb-16 sm:after:inset-px">
           <div className="flex flex-col">
             {isFilled.richText(slice.primary.about_subheading) && (
@@ -29,7 +37,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                     heading4: ({ children }) => (
                       <AnimatedText
                         as="h4"
-                        className="text-text-secondary mb-4 text-xl"
+                        className="mb-4 text-xl text-text-secondary"
                         splitType="words"
                         animateOnScroll={true}
                         scrollTriggerOptions={{
@@ -52,7 +60,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                   paragraph: ({ children }) => (
                     <AnimatedText
                       as="p"
-                      className="text-text-tertiary text-base md:text-lg"
+                      className="text-base text-text-tertiary will-change-transform md:text-lg"
                       splitType="block"
                       lineHeight={1.3}
                       blur={8}
@@ -73,7 +81,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
       </div>
 
       <div className="flex-2">
-        <Glow className="m-1 mb-3 pb-16 pt-12 after:inset-0 sm:px-12 sm:after:inset-px">
+        <Glow className="m-1 mb-3 pt-12 pb-16 after:inset-0 sm:px-12 sm:after:inset-px">
           <>
             {isFilled.richText(slice.primary.ss_subheading) && (
               <PrismicRichText
@@ -83,7 +91,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                     heading4: ({ children }) => (
                       <AnimatedText
                         as="h4"
-                        className="text-text-secondary mb-4 text-xl"
+                        className="mb-4 text-xl text-text-secondary will-change-transform"
                         splitType="words"
                         animateOnScroll={true}
                         scrollTriggerOptions={{
@@ -107,7 +115,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                     heading5: ({ children }) => (
                       <AnimatedText
                         as="h4"
-                        className="text-text-tertiary mb-1 text-base md:text-lg"
+                        className="mb-1 text-base text-text-tertiary md:text-lg"
                         splitType="block"
                         animateOnScroll={true}
                         scrollTriggerOptions={{
@@ -123,7 +131,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
               />
             )}
 
-            <ul className="text-text-tertiary [&>li>span]:text-text-accent flex flex-col text-base lowercase italic md:text-lg [&>li]:mr-3">
+            <ul className="flex flex-col text-base text-text-tertiary lowercase italic md:text-lg [&>li]:mr-3 [&>li>span]:text-text-accent">
               {isFilled.keyText(slice.primary.ss_subsection) &&
                 slice.primary.ss_subsection.split(",").map((item, index) => {
                   const softSkill = item.trim();
@@ -144,7 +152,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                       }}
                     >
                       <span>
-                        <CheckIcon className="text-grid-line-bright mr-1 h-6 w-6" />
+                        <CheckIcon className="mr-1 h-6 w-6 text-grid-line-bright" />
                       </span>
                       {softSkill}
                     </AnimatedText>

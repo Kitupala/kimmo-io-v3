@@ -26,7 +26,7 @@ const ProjectDetails = ({ card, index, refs }: ProjectDetailsProps) => {
             <h3>{card.project_title}</h3>
           </div>
 
-          <div className="border-grid-line-bright min-w-1/2 py-6 pr-6 lg:border-l lg:pl-12">
+          <div className="min-w-1/2 border-grid-line-bright py-6 pr-6 lg:border-l lg:pl-12">
             <div
               ref={index === 0 ? refs.descriptionRef : undefined}
               className="card-description"
@@ -46,6 +46,7 @@ const ProjectDetails = ({ card, index, refs }: ProjectDetailsProps) => {
                   rel="noopener noreferrer"
                   className="project-link group"
                   aria-label="Visit GitHub repository"
+                  data-cursor="-inverse"
                 >
                   <span className="icon-wrapper">
                     <GitHubIcon className="size-4 md:size-5" />
@@ -61,6 +62,7 @@ const ProjectDetails = ({ card, index, refs }: ProjectDetailsProps) => {
                   rel="noopener noreferrer"
                   className="project-link group"
                   aria-label="Visit live site"
+                  data-cursor="-inverse"
                 >
                   <span className="icon-wrapper">
                     <ExternalLinkIcon className="size-4 md:size-5" />
@@ -75,7 +77,7 @@ const ProjectDetails = ({ card, index, refs }: ProjectDetailsProps) => {
         {card.technologies && (
           <div
             ref={index === 0 ? refs.techIconsRef : undefined}
-            className="tech-icons-wrapper md:mt-18 mt-12"
+            className="tech-icons-wrapper mt-12 md:mt-18"
           >
             <TechIcons technologies={card.technologies} />
           </div>

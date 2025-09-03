@@ -2,8 +2,7 @@
 
 import React, { createContext, useContext, useEffect } from "react";
 import { ReactLenis, useLenis as useOriginalLenis } from "lenis/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/app/lib/gsap";
 import type Lenis from "lenis";
 
 export const LenisContext = createContext<Lenis | null>(null);
@@ -18,8 +17,6 @@ export default function LenisProvider({
 
   useEffect(() => {
     if (!lenis) return;
-
-    gsap.registerPlugin(ScrollTrigger);
 
     lenis.on("scroll", ScrollTrigger.update);
 

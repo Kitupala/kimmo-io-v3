@@ -1,12 +1,9 @@
 "use client";
 
-import { cn } from "@/app/lib/utils";
 import { useState, useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { cn } from "@/app/lib/utils";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 import Image from "next/image";
-
-gsap.registerPlugin(useGSAP);
 
 interface TechIconsProps {
   technologies: string;
@@ -116,6 +113,7 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
             className="tech-icon-container group relative"
             onMouseEnter={() => setActiveTooltip(tech)}
             onMouseLeave={() => setActiveTooltip(null)}
+            data-cursor="-hidden"
           >
             <div className="flex flex-col items-center justify-center">
               <Image
@@ -129,7 +127,7 @@ const TechIcons = ({ technologies, classNames = "" }: TechIconsProps) => {
               {activeTooltip === tech && (
                 <div
                   ref={tooltipRef}
-                  className="tooltip bg-background/80 text-text-secondary/70 border-grid-line absolute -top-8 left-1/2 z-10 -translate-x-1/2 transform whitespace-nowrap rounded-sm border px-2 py-1 text-xs backdrop-blur-sm"
+                  className="tooltip absolute -top-8 left-1/2 z-10 -translate-x-1/2 transform rounded-sm border border-grid-line bg-background/80 px-2 py-1 text-xs whitespace-nowrap text-text-secondary/70 backdrop-blur-sm"
                 >
                   {displayName}
                 </div>
