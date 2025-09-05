@@ -22,8 +22,8 @@ const SkillsHeader = ({ heading, body }: SkillsHeaderProps) => {
         }}
       >
         <div className="mb-3 flex items-center gap-4 sm:pl-8">
-          <div className="border-text-accent h-2 w-3.5 rounded-full border"></div>
-          <span className="text-text-accent text-sm">Abilities</span>
+          <div className="h-2 w-3.5 rounded-full border border-text-accent"></div>
+          <span className="text-sm text-text-accent">Abilities</span>
         </div>
       </AnimatedText>
 
@@ -35,7 +35,7 @@ const SkillsHeader = ({ heading, body }: SkillsHeaderProps) => {
               heading2: ({ children }) => (
                 <AnimatedText
                   as="h2"
-                  className="text-text-primary kerning-none min-w-1/2 mb-4 text-3xl tracking-tight sm:pl-8 md:text-5xl"
+                  className="kerning-none mb-4 min-w-1/2 text-3xl tracking-tight text-text-primary sm:pl-8 md:text-5xl"
                   splitType="words"
                   gradient
                   animateOnScroll={true}
@@ -58,13 +58,14 @@ const SkillsHeader = ({ heading, body }: SkillsHeaderProps) => {
               paragraph: ({ children }) => (
                 <AnimatedText
                   as="p"
-                  className="text-text-tertiary sm:max-w-2/3 md:max-w-1/2 grow pt-3 text-base sm:pl-12 md:text-lg"
+                  className="grow pt-3 text-base text-text-tertiary sm:max-w-2/3 sm:pl-12 md:max-w-1/2 md:text-lg"
                   splitType="block"
                   lineHeight={1.3}
+                  duration={0.8}
                   blur={8}
                   animateOnScroll={true}
                   scrollTriggerOptions={{
-                    start: "top bottom-=150",
+                    start: "top bottom-=200",
                     once: true,
                   }}
                 >

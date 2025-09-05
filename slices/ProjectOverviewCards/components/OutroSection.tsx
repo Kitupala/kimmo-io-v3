@@ -19,7 +19,7 @@ const OutroSection = () => {
           alt=""
           fill
           priority
-          className="mask-b-from-60% mask-radial-[70%_50%] mask-radial-from-20% object-cover object-left opacity-20"
+          className="mt-10 mask-b-from-60% mask-radial-[70%_50%] mask-radial-from-20% object-cover object-left opacity-20"
         />
       </div>
 
