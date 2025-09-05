@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useRef } from "react";
 import { isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import AnimatedText from "@/app/components/AnimatedText";
 import { IntroSectionProps } from "@/slices/ProjectOverviewCards/types";
 
+import { useLenisContext } from "@/app/components/LenisProvider";
+import { useLenisParallax } from "@/app/hooks/useLenisParallax";
+
 const IntroSection = ({ heading, description }: IntroSectionProps) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const descRef = useRef<HTMLDivElement>(null);
+  const lenis = useLenisContext();
+
+  useLenisParallax({
+    lenis,
+    sectionRef,
+    targetRef: descRef,
+    startY: 210,
+    moveDistance: 310,
+    scrub: 0.5,
+  });
+
   return (
     <section
+      ref={sectionRef}
       id="work"
       className="intro bg-[linear-gradient(180deg,rgba(97,106,115,0.02)_0%,rgba(97,106,115,0.08)_100%)]"
     >
@@ -50,29 +67,14 @@ const IntroSection = ({ heading, description }: IntroSectionProps) => {
             />
           )}
 
-          {isFilled.richText(description) && (
-            <PrismicRichText
-              field={description}
-              components={{
-                paragraph: ({ children }) => (
-                  <AnimatedText
-                    as="p"
-                    className="grow pt-3 text-base text-text-tertiary sm:max-w-2/3 sm:pl-12 md:max-w-1/2 md:text-lg"
-                    splitType="block"
-                    lineHeight={1.3}
-                    blur={8}
-                    animateOnScroll={true}
-                    scrollTriggerOptions={{
-                      start: "top bottom-=150",
-                      once: true,
-                    }}
-                  >
-                    {children}
-                  </AnimatedText>
-                ),
-              }}
-            />
-          )}
+          <div
+            ref={descRef}
+            className="grow pt-3 text-base text-text-tertiary will-change-transform sm:max-w-2/3 sm:pl-12 md:max-w-1/2 md:text-lg"
+          >
+            {isFilled.richText(description) && (
+              <PrismicRichText field={description} />
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -18,12 +18,13 @@ export default function LenisProvider({
   useEffect(() => {
     if (!lenis) return;
 
+    const update = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
     lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
+    gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
 
     if (typeof window !== "undefined") {
@@ -32,19 +33,13 @@ export default function LenisProvider({
 
     return () => {
       lenis.off("scroll", ScrollTrigger.update);
-      gsap.ticker.remove(lenis.raf);
+      gsap.ticker.remove(update);
     };
   }, [lenis]);
 
-  // Force a ScrollTrigger refresh after Lenis is stable
   useEffect(() => {
     if (!lenis) return;
-
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 200);
-
-    return () => clearTimeout(refreshTimer);
+    requestAnimationFrame(() => ScrollTrigger.refresh());
   }, [lenis]);
 
   return (
@@ -55,7 +50,7 @@ export default function LenisProvider({
           duration: 1.2,
           wheelMultiplier: 1.0,
           smoothWheel: true,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Default easing
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         }}
       >
         {children}
