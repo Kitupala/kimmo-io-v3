@@ -58,7 +58,7 @@ export default function GridLines() {
   return (
     <>
       {/* BLURRED TOP */}
-      <div className="absolute -top-[280px] left-1/2 -z-10 h-[700px] w-screen max-w-[1150px] -translate-x-1/2 overflow-hidden xs:-top-[290px] xs:h-[700px] md:-top-[480px] md:h-[1000px]">
+      <div className="absolute -top-[280px] left-1/2 z-10 h-[700px] w-screen max-w-[1150px] -translate-x-1/2 overflow-hidden xs:-top-[290px] xs:h-[700px] md:-top-[480px] md:h-[1000px]">
         <div className="absolute h-full w-full">
           <TopBlur className="w-full" />
         </div>
@@ -80,7 +80,7 @@ export default function GridLines() {
                 }}
                 className={cn(
                   "h-screen w-px bg-grid-line will-change-[filter]",
-                  `${i === 0 || i === 4 ? "max-[970px]:hidden" : ""}`,
+                  i === 0 || i === 4 ? "max-[970px]:hidden" : "",
                 )}
               />
             ))}

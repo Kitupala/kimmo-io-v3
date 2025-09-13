@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, Suspense } from "react";
 import { gsap, useGSAP } from "@/app/lib/gsap";
-
 import Image from "next/image";
+import FluidGlassLens from "@/slices/Hero/components/FluidGlassLens";
+import ThreeHeroImage from "@/slices/Hero/components/ThreeHeroImage";
 import { BRIGHTNESS_DIM_SETTINGS } from "@/app/constants";
 
 const HeroImage = () => {
@@ -104,7 +105,6 @@ const HeroImage = () => {
         "-=0.2",
       );
 
-      // Resize handler to update widths responsively
       const handleResize = () => {
         const { line1, line2 } = getResponsiveWidths();
 
@@ -129,14 +129,33 @@ const HeroImage = () => {
       {/* CIRCLE BORDER */}
       <div
         ref={circleRef}
-        className="absolute -z-20 h-[360px] w-[360px] rounded-full border border-grid-line xs:mt-4 xs:h-[480px] xs:w-[480px] md:h-[594px] md:w-[594px]"
+        className="absolute -z-10 h-[360px] w-[360px] rounded-full border border-grid-line xs:mt-4 xs:h-[480px] xs:w-[480px] md:h-[594px] md:w-[594px]"
       />
 
-      {/* IMAGE CONTAINER */}
+      {/* FLUIDGLASSLENS WITH THE HERO IMAGE */}
+      <div
+        data-cursor="-hidden"
+        className="lens-container absolute z-20 h-[360px] w-[360px] cursor-none xs:mt-4 xs:h-[480px] xs:w-[480px] md:h-[594px] md:w-[460px]"
+      >
+        <FluidGlassLens
+          lensProps={{
+            scale: 0.15,
+            ior: 1.03,
+            thickness: 2,
+            chromaticAberration: 0.03,
+          }}
+        >
+          <Suspense fallback={null}>
+            <ThreeHeroImage src="/assets/images/herowithline.png" />
+          </Suspense>
+        </FluidGlassLens>
+      </div>
+
+      {/* HERO IMAGE FALLBACK */}
       <div className="absolute -z-30 h-[360px] w-[360px] xs:mt-4 xs:h-[480px] xs:w-[480px] md:h-[594px] md:w-[594px]">
         <Image
           ref={imageRef}
-          src="/assets/images/hero.svg"
+          src="/assets/images/hero.png"
           alt="hero image"
           fill
           sizes="(max-width: 768px) 360px, 480px, 594px"
@@ -146,7 +165,10 @@ const HeroImage = () => {
 
       {/* HORIZONTAL LINES */}
       <div className="absolute mt-[270px] flex flex-col items-center gap-32 xs:mt-[380px] xs:gap-42 md:mt-[470px] md:gap-50">
-        <div ref={line1Ref} className="h-[1px] bg-grid-line" />
+        <div
+          ref={line1Ref}
+          className="pointer-events-none z-30 h-[1px] bg-grid-line"
+        />
         <div ref={line2Ref} className="h-[1px] bg-grid-line" />
       </div>
     </div>

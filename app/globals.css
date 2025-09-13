@@ -71,6 +71,30 @@
     @apply  bg-gradient-to-br from-text-primary from-25% to-text-tertiary bg-clip-text text-transparent;
   }
 
+  .lens-container {
+    @apply bg-transparent;
+    clip-path: polygon(
+            0% 22%,
+            100% 22%,
+            100% 82%,
+            96% 85%,
+            85% 92%,
+            72% 97%,
+            63% 99%,
+            50% 100%,
+            37% 99%,
+            28% 97%,
+            15% 92%,
+            4% 85%,
+            0% 82%
+    );
+  }
+
+  /*.z-above-lens {*/
+  /*  @apply relative z-30 pointer-events-none;*/
+  /*}*/
+
+
   .fade-stripe {
     background-image: linear-gradient(
             180deg,
@@ -89,7 +113,6 @@
             rgba(97, 106, 115, 0.02) 100%
     );
   }
-
 
   .card:nth-child(2) {
     @apply mt-[50vh];
