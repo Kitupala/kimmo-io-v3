@@ -1,0 +1,113 @@
+{
+  "id": "growth",
+  "type": "SharedSlice",
+  "name": "Growth",
+  "description": "Growth",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading3,heading2"
+          }
+        },
+        "subheading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subheading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading4"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "study_entry": {
+          "type": "Group",
+          "config": {
+            "label": "Study Entry",
+            "repeat": true,
+            "fields": {
+              "date_range": {
+                "type": "Text",
+                "config": {
+                  "label": "Date Range",
+                  "placeholder": ""
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "provider": {
+                "type": "Text",
+                "config": {
+                  "label": "Provider",
+                  "placeholder": ""
+                }
+              },
+              "provider_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Provider Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
+                }
+              },
+              "certificate": {
+                "type": "Image",
+                "config": {
+                  "label": "Certificate",
+                  "constraint": {
+                    "width": 0
+                  },
+                  "thumbnails": []
+                }
+              },
+              "technologies": {
+                "type": "Text",
+                "config": {
+                  "label": "Technologies",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

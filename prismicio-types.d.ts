@@ -160,6 +160,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomepageDocumentDataSlicesSlice =
+  | GrowthSlice
   | SkillsOverviewSlice
   | ProjectOverviewCardSlice
   | HeroSlice;
@@ -228,6 +229,161 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = FooterDocument | HomepageDocument;
+
+/**
+ * Item in *Growth → Default → Primary → Study Entry*
+ */
+export interface GrowthSliceDefaultPrimaryStudyEntryItem {
+  /**
+   * Date Range field in *Growth → Default → Primary → Study Entry*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[].date_range
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  date_range: prismic.KeyTextField;
+
+  /**
+   * Title field in *Growth → Default → Primary → Study Entry*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Provider field in *Growth → Default → Primary → Study Entry*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[].provider
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  provider: prismic.KeyTextField;
+
+  /**
+   * Provider Link field in *Growth → Default → Primary → Study Entry*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[].provider_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  provider_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Description field in *Growth → Default → Primary → Study Entry*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Certificate field in *Growth → Default → Primary → Study Entry*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[].certificate
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  certificate: prismic.ImageField<never>;
+
+  /**
+   * Technologies field in *Growth → Default → Primary → Study Entry*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[].technologies
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  technologies: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Growth → Default → Primary*
+ */
+export interface GrowthSliceDefaultPrimary {
+  /**
+   * Heading field in *Growth → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *Growth → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * Body field in *Growth → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Study Entry field in *Growth → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: growth.default.primary.study_entry[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  study_entry: prismic.GroupField<
+    Simplify<GrowthSliceDefaultPrimaryStudyEntryItem>
+  >;
+}
+
+/**
+ * Default variation for Growth Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GrowthSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GrowthSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Growth*
+ */
+type GrowthSliceVariation = GrowthSliceDefault;
+
+/**
+ * Growth Shared Slice
+ *
+ * - **API ID**: `growth`
+ * - **Description**: Growth
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GrowthSlice = prismic.SharedSlice<"growth", GrowthSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -625,6 +781,11 @@ declare module "@prismicio/client" {
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      GrowthSlice,
+      GrowthSliceDefaultPrimaryStudyEntryItem,
+      GrowthSliceDefaultPrimary,
+      GrowthSliceVariation,
+      GrowthSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
