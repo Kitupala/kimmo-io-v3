@@ -90,11 +90,6 @@
     );
   }
 
-  /*.z-above-lens {*/
-  /*  @apply relative z-30 pointer-events-none;*/
-  /*}*/
-
-
   .fade-stripe {
     background-image: linear-gradient(
             180deg,
