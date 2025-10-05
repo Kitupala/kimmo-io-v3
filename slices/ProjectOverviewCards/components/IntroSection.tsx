@@ -12,12 +12,15 @@ const IntroSection = ({ heading, description }: IntroSectionProps) => {
   const descRef = useRef<HTMLDivElement>(null);
   const lenis = useLenisContext();
 
+  const moveDistance =
+    typeof window !== "undefined" && window.innerWidth < 768 ? 250 : 310;
+
   useLenisParallax({
     lenis,
     sectionRef,
     targetRef: descRef,
     startY: 210,
-    moveDistance: 310,
+    moveDistance,
     scrub: 0.5,
   });
 
@@ -39,7 +42,7 @@ const IntroSection = ({ heading, description }: IntroSectionProps) => {
         >
           <div className="mb-3 flex items-center gap-4 sm:pl-8">
             <div className="h-2 w-3.5 rounded-full border border-text-accent/80"></div>
-            <span className="text-sm text-text-accent/80">Work</span>
+            <span className="text-xs text-text-accent/80 sm:text-sm">Work</span>
           </div>
         </AnimatedText>
 

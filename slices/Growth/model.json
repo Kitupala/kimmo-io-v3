@@ -39,10 +39,10 @@
             "single": "paragraph,strong,em,hyperlink"
           }
         },
-        "study_entry": {
+        "study_entries": {
           "type": "Group",
           "config": {
-            "label": "Study Entry",
+            "label": "Study Entries",
             "repeat": true,
             "fields": {
               "date_range": {
@@ -104,6 +104,38 @@
                 }
               }
             }
+          }
+        },
+        "stairway_image": {
+          "type": "Image",
+          "config": {
+            "label": "Stairway Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "silhouette_image": {
+          "type": "Image",
+          "config": {
+            "label": "Silhouette Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "mantra_image": {
+          "type": "Image",
+          "config": {
+            "label": "Mantra Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "punchline_image": {
+          "type": "Image",
+          "config": {
+            "label": "Punchline Image",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

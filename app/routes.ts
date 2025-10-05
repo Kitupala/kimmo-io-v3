@@ -4,11 +4,11 @@ export const routes = [
     href: "/#work",
   },
   {
-    title: "Studies",
-    href: "/#studies",
-  },
-  {
     title: "Abilities",
     href: "/#abilities",
+  },
+  {
+    title: "Growth",
+    href: "/#growth",
   },
 ];

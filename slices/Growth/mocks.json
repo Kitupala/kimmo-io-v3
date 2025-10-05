@@ -36,17 +36,25 @@
 					}
 				]
 			},
-			"study_entry": {
+			"study_entries": {
 				"__TYPE__": "GroupContentType",
 				"value": [
 					{
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
+								"date_range",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "danger",
+									"type": "Text"
+								}
+							],
+							[
 								"title",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "various",
+									"value": "busy",
 									"type": "Text"
 								}
 							],
@@ -54,16 +62,20 @@
 								"provider",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "railroad",
+									"value": "powerful",
 									"type": "Text"
 								}
 							],
 							[
-								"date_range",
+								"provider_link",
 								{
-									"__TYPE__": "FieldContent",
-									"value": "allow",
-									"type": "Text"
+									"key": "c2fc4ebf-a18e-4ea4-abcb-3375842a8628",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "zebra"
+									}
 								}
 							],
 							[
@@ -74,30 +86,10 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Lorem exercitation aliqua et ut exercitation eiusmod do anim ut dolore cillum ea ipsum do aliqua."
+												"text": "Ad amet adipisicing veniam deserunt commodo ex elit aute nostrud consequat fugiat sit irure. Quis labore ut esse consequat ullamco velit reprehenderit in exercitation occaecat. Laboris et et do dolore ullamco elit est laborum dolor occaecat esse sunt deserunt anim."
 											}
 										}
 									]
-								}
-							],
-							[
-								"technologies",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "loose",
-									"type": "Text"
-								}
-							],
-							[
-								"provider_link",
-								{
-									"key": "f23c5b78-97cd-4312-abfb-a399fad53e5f",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "http://google.com",
-										"text": "gentle"
-									}
 								}
 							],
 							[
@@ -105,13 +97,13 @@
 								{
 									"origin": {
 										"id": "main",
-										"url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-										"width": 3882,
-										"height": 2584
+										"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+										"width": 4000,
+										"height": 6000
 									},
-									"url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-									"width": 3882,
-									"height": 2584,
+									"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+									"width": 4000,
+									"height": 6000,
 									"edit": {
 										"zoom": 1,
 										"crop": {
@@ -120,15 +112,114 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "how",
+									"alt": "root",
 									"credits": null,
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
+								}
+							],
+							[
+								"technologies",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "branch",
+									"type": "Text"
 								}
 							]
 						]
 					}
 				]
+			},
+			"mantra_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+					"width": 4000,
+					"height": 6000
+				},
+				"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+				"width": 4000,
+				"height": 6000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "limited",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"stairway_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f",
+					"width": 6597,
+					"height": 4398
+				},
+				"url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f",
+				"width": 6597,
+				"height": 4398,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "camp",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"silhouette_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+					"width": 4160,
+					"height": 3120
+				},
+				"url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+				"width": 4160,
+				"height": 3120,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "complex",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"punchline_image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+					"width": 3277,
+					"height": 4092
+				},
+				"url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+				"width": 3277,
+				"height": 4092,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "us",
+				"thumbnails": {}
 			}
 		},
 		"items": []
