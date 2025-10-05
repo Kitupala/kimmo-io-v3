@@ -1,8 +1,6 @@
 import { RefObject, useRef } from "react";
 
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP, ScrollTrigger } from "@/app/lib/gsap";
 import { setupInitialStyles, setupTextSplitting } from "../utils/gsapSetup";
 import { createScrollTriggers } from "../utils/scrollTriggerUtils";
 import { setupMarqueeAnimation } from "../utils/marqueeUtils";

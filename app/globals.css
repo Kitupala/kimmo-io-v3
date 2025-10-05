@@ -1,35 +1,51 @@
+/* === Tailwind + Animations === */
 @import "tailwindcss";
+@import "tw-animate-css";
 
+/* === Variants === */
+@custom-variant dark (&:is(.dark *));
+
+/* === Root Tokens === */
 :root {
-  --background: #08090a;
-  --foreground: #ededed;
+  --grid-line: oklch(0.94 0.004 274 / 0.06);
+  --grid-line-medium: oklch(0.74 0.004 274 / 0.20);
+  --grid-line-bright: oklch(0.74 0.004 274 / 0.30);
 
-  /*--grid-line: rgba(234, 94, 94, 0.6);*/
+  --header-background: oklch(0.17 0.004 274 / 0.25);
 
-  --grid-line: rgba(159, 159, 173, 0.08);
-  --grid-line-medium: rgba(159, 159, 173, 0.2);
-  --grid-line-bright: rgba(159, 159, 173, 0.3);
-  --header-background: rgba(9, 9, 9, 0.25);
-  --gradient-text-from: rgba(242, 243, 243);
-  --gradient-text-to: rgba(72, 79, 86);
-  --color-text-accent: rgba(211, 177, 68, 0.8);
+  --gradient-text-from: oklch(0.98 0.001 270);
+  --gradient-text-to: oklch(0.63 0.014 270);
+  --color-text-accent: oklch(0.80 0.14 83 / 0.8);
+
+  --radius: 0.625rem;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
 }
 
+/* === Theme Mapping === */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-grid-line: var(--grid-line);
   --color-grid-line-medium: var(--grid-line-medium);
   --color-grid-line-bright: var(--grid-line-bright);
   --color-header-background: var(--header-background);
+
   --color-gradient-text-from: var(--gradient-text-from);
   --color-gradient-text-to: var(--gradient-text-to);
 
-  --color-text-primary: #f7f8f8;
-  --color-text-secondary: #d0d6e0;
-  --color-text-tertiary: #8a8f98;
-  --color-text-quaternary: #62666d;
-  --color-text-accent: var(--color-text-accent);
+  --color-text-primary: oklch(0.98 0 197);
+  --color-text-secondary: oklch(0.87 0.015 260.7);
+  --color-text-tertiary: oklch(0.65 0.015 262.4);
+  --color-text-quaternary: oklch(0.51 0.012 261.7);
+
+    --color-text-accent: var(--color-text-accent);
 
   --font-everett: var(--font-everett), system-ui, sans-serif;
   --font-roboto-mono: var(--font-roboto-mono), monospace;
@@ -37,9 +53,20 @@
 
   --breakpoint-xs: 31rem;
   --ease-in-out-quad: cubic-bezier(0.455,0.03,0.515,0.955);
+
+  --color-ring: var(--ring);
+  --color-border: var(--border);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* === Base === */
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
   body {
     @apply bg-background text-foreground font-everett;
   }
@@ -48,48 +75,34 @@
   }
 }
 
+/* === Components === */
 @layer components {
   .nav-link {
     @apply font-roboto-mono uppercase text-text-primary text-xs;
   }
-
   .nav-link-wrap {
     @apply block relative overflow-hidden leading-5;
   }
-
   .nav-link-text {
     @apply block will-change-transform translate-y-0;
   }
-
   .nav-link-text:nth-child(2) {
     @apply absolute left-0 top-full;
   }
 }
 
+/* === Utilities === */
 @layer utilities {
   .text-gradient {
     @apply  bg-gradient-to-br from-text-primary from-25% to-text-tertiary bg-clip-text text-transparent;
   }
-
   .lens-container {
     @apply bg-transparent;
     clip-path: polygon(
-            0% 22%,
-            100% 22%,
-            100% 82%,
-            96% 85%,
-            85% 92%,
-            72% 97%,
-            63% 99%,
-            50% 100%,
-            37% 99%,
-            28% 97%,
-            15% 92%,
-            4% 85%,
-            0% 82%
+            0% 22%, 100% 22%, 100% 82%, 96% 85%, 85% 92%, 72% 97%,
+            63% 99%, 50% 100%, 37% 99%, 28% 97%, 15% 92%, 4% 85%, 0% 82%
     );
   }
-
   .fade-stripe {
     background-image: linear-gradient(
             180deg,
@@ -100,7 +113,6 @@
             rgba(8, 9, 10, 0) 70%
     );
   }
-
   .hero-gradient {
     background-image: linear-gradient(
             180deg,
@@ -108,78 +120,62 @@
             rgba(97, 106, 115, 0.02) 100%
     );
   }
-
   .card:nth-child(2) {
     @apply mt-[50vh];
   }
-
   .kerning-none {
     font-kerning: none;
   }
 }
 
-/* PROJECTOVERVIEWCARDS */
+/* === Project Sections === */
 
+/* Project Overview Cards */
 section .intro, section .cards, section .outro {
   @apply relative w-screen bg-background text-text-primary;
 }
-
 .intro {
   @apply h-[30svh] px-6 flex justify-center items-center;
 }
-
 .outro {
   @apply h-screen flex justify-center items-center;
 }
-
 .cards {
   @apply relative flex flex-col gap-[25svh];
 }
-
 .card-marquee {
   @apply w-full absolute top-1/2 left-0 -translate-y-1/2 overflow-hidden;
 }
-
 .marquee {
   @apply flex;
 }
-
 .marquee h3 {
-  @apply text-[11vw] md:text-[9vw] whitespace-nowrap font-roboto-mono md:tracking-[-8px] tracking-[-4px] font-medium mr-6 text-grid-line;
+  @apply text-[11vw] md:text-[9vw] whitespace-nowrap font-roboto-mono md:tracking-[-8px] tracking-[-4px] font-medium mr-6 text-[#181819]/60;
 }
-
 .card {
   @apply relative w-screen h-svh p-1;
 }
-
 .card-wrapper {
   @apply relative w-full h-full will-change-transform;
 }
-
 .card-img {
   @apply absolute w-full h-full overflow-hidden border border-grid-line rounded-[150px];
 }
-
 .card-img img {
   @apply will-change-transform scale-100 object-right-bottom;
 }
-
 .project-image-container {
   @apply relative w-full h-full overflow-hidden;
 }
-
 .project-image {
   @apply absolute h-[calc(100%-48px)] w-[calc(100%-48px)] m-6 rounded-xl overflow-hidden;
 }
-
 .card-content {
   @apply absolute w-full h-full flex flex-col z-40;
 }
-
 .card-details-outer-container {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-5/6 xl:min-w-2/3;
 }
-
 .card-details {
   @apply flex flex-col z-10 p-6 md:p-12 rounded-2xl border border-transparent;
   background-image:
@@ -188,27 +184,53 @@ section .intro, section .cards, section .outro {
   background-origin: padding-box, border-box;
   background-clip: padding-box, border-box;
 }
-
 .card-details .card-eyebrow {
   @apply text-text-accent text-[10px] sm:text-xs uppercase font-roboto-mono transform translate-x-5 opacity-0 mb-1;
 }
-
 .card-details .card-title {
   @apply w-full text-3xl sm:text-5xl md:text-6xl tracking-tighter leading-tight sm:mt-2 md:pr-12 whitespace-nowrap;
 }
-
 .card-details .card-description {
   @apply w-full mb-8 md:mb-12 translate-x-10 opacity-0 text-text-secondary text-sm md:text-lg;
 }
-
 .card-details .char {
   @apply relative overflow-hidden inline-block;
 }
-
 .card-details .char span {
   @apply translate-x-full inline-block will-change-transform;
 }
-
 .card-actions a.project-link {
   @apply text-text-primary/70 hover:text-text-primary flex items-center gap-2 text-xs font-light transition-colors;
+}
+
+/* Growth / Study Entry */
+.study-entry {
+  @apply grid w-full max-w-[880px] grid-cols-1 sm:grid-cols-[auto_1fr_1fr]
+  md:grid-cols-4 self-center text-text-tertiary transition-all duration-300 group-hover/list:opacity-50 hover:opacity-100 gap-x-8 md:gap-8 gap-y-1 sm:gap-y-4 border-b border-grid-line/60 pb-4 sm:pb-10;
+}
+.study-entry a h4 {
+  @apply mb-2 font-medium text-text-secondary transition-colors duration-300 group-hover/link:text-text-accent;
+}
+.study-entry .arrow {
+  @apply ml-1 inline-block h-4 w-4 translate-y-px transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 after:text-lg after:content-['_↗']
+}
+.tooltip {
+  @apply  absolute top-[calc(50%_-_55px)] left-1/2 z-10 mb-2 -translate-x-1/2 transform rounded-sm border border-grid-line bg-background/80 px-2 py-1 text-xs whitespace-nowrap text-text-secondary/70 backdrop-blur-sm;
+}
+.certificate-overlay {
+  @apply absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 hover:opacity-100;
+}
+.certificate-overlay span {
+  @apply rounded-md bg-background/80 px-4 py-2 text-sm text-text-secondary;
+}
+
+/* === Dark Mode Overrides === */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
 }

@@ -117,6 +117,8 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                         as="h4"
                         className="mb-1 text-base text-text-tertiary md:text-lg"
                         splitType="block"
+                        lineHeight={1.3}
+                        blur={8}
                         animateOnScroll={true}
                         scrollTriggerOptions={{
                           start: "top bottom-=20",
@@ -131,7 +133,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
               />
             )}
 
-            <ul className="flex flex-col text-base text-text-tertiary lowercase italic md:text-lg [&>li]:mr-3 [&>li>span]:text-text-accent">
+            <ul className="mt-2 flex flex-col text-base text-text-tertiary lowercase italic md:text-lg [&>li]:mr-3 [&>li>span]:text-text-accent">
               {isFilled.keyText(slice.primary.ss_subsection) &&
                 slice.primary.ss_subsection.split(",").map((item, index) => {
                   const softSkill = item.trim();
