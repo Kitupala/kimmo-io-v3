@@ -6,6 +6,7 @@ import { gsap, useGSAP } from "@/app/lib/gsap";
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/app/components/ui/dialog";
 import { ImageField, KeyTextField } from "@prismicio/client";
@@ -73,6 +74,10 @@ const CertificateDialog = ({
         </div>
 
         <DialogContent className="group/overlay sm:max-w-md md:max-w-xl lg:max-w-4xl">
+          <DialogTitle className="sr-only">
+            {title} Certificate from {provider}
+          </DialogTitle>
+
           <a
             href={certificate.url}
             target="_blank"
