@@ -1,7 +1,7 @@
 import { createClient } from "@/prismicio";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
+import FooterLinks from "@/app/components/FooterLinks";
 
 const Footer = async () => {
   const client = createClient();
@@ -19,25 +19,7 @@ const Footer = async () => {
             )}
 
             <nav aria-label="Footer social links">
-              <ul className="mb-1 flex space-x-6 xs:mb-2">
-                {footer.data.social_links.map((item, i) => (
-                  <li key={i}>
-                    <PrismicNextLink
-                      field={item.link}
-                      className="group inline-flex min-h-11 items-center"
-                      data-cursor="-inverse"
-                    >
-                      <span className="flex size-11 items-center justify-center rounded-full bg-grid-line-medium/50 transition-transform duration-500 hover:scale-90 sm:size-15">
-                        <PrismicNextImage
-                          field={item.icon}
-                          alt=""
-                          className="size-5 transition-all duration-200 sm:size-6"
-                        />
-                      </span>
-                    </PrismicNextLink>
-                  </li>
-                ))}
-              </ul>
+              <FooterLinks links={footer.data.social_links} />
             </nav>
 
             <hr className="h-px w-sm border-0 bg-gradient-to-r from-transparent via-grid-line-bright to-transparent lg:w-lg" />
