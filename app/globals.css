@@ -73,6 +73,9 @@
       @apply blur-sm transition-[filter] brightness-80 duration-500 ease-in-out;
     }
   }
+  h2 {
+    @apply mb-4 min-w-1/2 text-3xl tracking-tight text-text-primary sm:pl-8 md:text-5xl;
+  }
   button, a {
     @apply cursor-none;
   }

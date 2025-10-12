@@ -33,7 +33,7 @@ const SkillsHeader = ({ heading, body }: SkillsHeaderProps) => {
               heading2: ({ children }) => (
                 <AnimatedText
                   as="h2"
-                  className="kerning-none mb-4 min-w-1/2 text-3xl tracking-tight text-text-primary sm:pl-8 md:text-5xl"
+                  className="kerning-none"
                   splitType="words"
                   gradient
                   animateOnScroll={true}
