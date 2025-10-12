@@ -131,7 +131,7 @@ const Header = () => {
             data-cursor="-inverse"
             onClick={handleLogoClick}
           >
-            <Logo className="w-[60px] sm:w-[75px]" fill="#d0d6e0" />
+            <Logo className="h-auto w-[60px] sm:w-[75px]" fill="#cfd5de" />
           </Link>
 
           <NavMobile />
