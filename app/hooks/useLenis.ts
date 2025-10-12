@@ -35,5 +35,3 @@ export const useLenis = (options?: Partial<LenisOptions>) => {
 
   return lenis;
 };
-
-export default useLenis;
