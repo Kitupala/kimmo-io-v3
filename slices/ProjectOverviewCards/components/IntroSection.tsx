@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 import { isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import AnimatedText from "@/app/components/AnimatedText";
 import { IntroSectionProps } from "@/slices/ProjectOverviewCards/types";
 
 import { useLenisContext } from "@/app/components/LenisProvider";
 import { useLenisParallax } from "@/app/hooks/useLenisParallax";
+
+import AnimatedText from "@/app/components/AnimatedText";
+import Eyebrow from "@/app/components/Eyebrow";
 
 const IntroSection = ({ heading, description }: IntroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,10 +41,7 @@ const IntroSection = ({ heading, description }: IntroSectionProps) => {
             once: true,
           }}
         >
-          <div className="mb-3 flex items-center gap-4 sm:pl-8">
-            <div className="h-2 w-3.5 rounded-full border border-text-accent/80"></div>
-            <span className="text-xs text-text-accent/80 sm:text-sm">Work</span>
-          </div>
+          <Eyebrow text="Work" />
         </AnimatedText>
 
         <div className="flex flex-col sm:flex-row">

@@ -3,6 +3,7 @@
 import { isFilled, RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import AnimatedText from "@/app/components/AnimatedText";
+import Eyebrow from "@/app/components/Eyebrow";
 
 interface SkillsHeaderProps {
   heading: RichTextField;
@@ -21,10 +22,7 @@ const SkillsHeader = ({ heading, body }: SkillsHeaderProps) => {
           once: true,
         }}
       >
-        <div className="mb-3 flex items-center gap-4 sm:pl-8">
-          <div className="h-2 w-3.5 rounded-full border border-text-accent"></div>
-          <span className="text-xs text-text-accent sm:text-sm">Abilities</span>
-        </div>
+        <Eyebrow text="Abilities" />
       </AnimatedText>
 
       <div className="flex flex-col sm:flex-row">

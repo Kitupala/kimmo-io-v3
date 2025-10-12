@@ -4,9 +4,10 @@ import React, { useRef } from "react";
 import { isFilled, RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 
-import AnimatedText from "@/app/components/AnimatedText";
 import { useLenisContext } from "@/app/components/LenisProvider";
 import { useLenisParallax } from "@/app/hooks/useLenisParallax";
+import AnimatedText from "@/app/components/AnimatedText";
+import Eyebrow from "@/app/components/Eyebrow";
 
 interface GrowthHeaderProps {
   heading: RichTextField;
@@ -42,10 +43,7 @@ const GrowthHeader = ({ heading, subheading, body }: GrowthHeaderProps) => {
           once: true,
         }}
       >
-        <div className="mb-3 flex items-center gap-4 sm:pl-8">
-          <div className="h-2 w-3.5 rounded-full border border-text-accent"></div>
-          <span className="text-xs text-text-accent sm:text-sm">Growth</span>
-        </div>
+        <Eyebrow text="Growth" />
       </AnimatedText>
 
       <div className="flex flex-col sm:flex-row">
