@@ -15,6 +15,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
         className="hero-gradient h-svh items-center text-center first:pt-22"
+        id="hero"
       >
         <GridLines />
         <HeroImage />

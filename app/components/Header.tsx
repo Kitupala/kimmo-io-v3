@@ -1,15 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useWindowScroll } from "react-use";
 
-import Link from "next/link";
 import Logo from "@/app/components/Logo";
 import NavMobile from "@/app/components/NavMobile";
 import NavDesktop from "@/app/components/NavDesktop";
 
 import { gsap, useGSAP } from "@/app/lib/gsap";
-import useLenis from "@/app/hooks/useLenis";
+import { useLenis } from "@/app/hooks/useLenis";
+import { SCROLL_CONFIG } from "@/app/constants";
 
 const Header = () => {
   const lenis = useLenis();
@@ -108,6 +109,13 @@ const Header = () => {
     setIsMouseOver(false);
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (lenis) {
+      lenis.scrollTo("#hero", { duration: SCROLL_CONFIG.duration, offset: 0 });
+    }
+  };
+
   return (
     <div
       ref={containerRef}
@@ -121,16 +129,7 @@ const Header = () => {
             href="/"
             className="relative z-50 py-4"
             data-cursor="-inverse"
-            onClick={(e) => {
-              if (lenis) {
-                e.preventDefault();
-                lenis.scrollTo(0, {
-                  duration: 2.2,
-                  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                });
-                window.history.pushState(null, "", "/");
-              }
-            }}
+            onClick={handleLogoClick}
           >
             <Logo className="w-[60px] sm:w-[75px]" fill="#d0d6e0" />
           </Link>

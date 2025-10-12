@@ -52,7 +52,7 @@ const ProjectOverviewCards: FC<ProjectOverviewCardProps> = ({ slice }) => {
   });
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative" id="work">
       <IntroSection
         heading={slice.primary.heading}
         description={slice.primary.description}

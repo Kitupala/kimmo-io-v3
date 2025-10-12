@@ -27,7 +27,6 @@ const IntroSection = ({ heading, description }: IntroSectionProps) => {
   return (
     <section
       ref={sectionRef}
-      id="work"
       className="intro bg-[linear-gradient(180deg,rgba(97,106,115,0.02)_0%,rgba(97,106,115,0.08)_100%)]"
     >
       <div className="mx-auto flex max-w-4xl flex-col">

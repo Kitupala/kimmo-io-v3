@@ -1,14 +1,16 @@
 export const routes = [
   {
     title: "Work",
-    href: "/#work",
+    href: "#work",
   },
   {
     title: "Abilities",
-    href: "/#abilities",
+    href: "#abilities",
+    offset: -10,
   },
   {
     title: "Growth",
-    href: "/#growth",
+    href: "#growth",
+    offset: -170,
   },
 ];

@@ -1,27 +1,24 @@
 import { useEffect } from "react";
+import type Lenis from "lenis";
 
-export const useScrollLock = (locked: boolean) => {
+export const useScrollLock = (isActive: boolean, lenis: Lenis | null) => {
   useEffect(() => {
-    if (!locked) return;
+    if (!lenis) return;
 
-    const scrollY = window.scrollY;
-    const body = document.body;
-
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-    body.style.width = "100%";
-    body.style.overflow = "hidden";
+    if (isActive) {
+      lenis.stop();
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("blurred");
+    } else {
+      lenis.start();
+      document.body.style.overflow = "";
+      document.body.classList.remove("blurred");
+    }
 
     return () => {
-      body.style.position = "";
-      body.style.top = "";
-      body.style.left = "";
-      body.style.right = "";
-      body.style.width = "";
-      body.style.overflow = "";
-      window.scrollTo(0, scrollY);
+      lenis.start();
+      document.body.style.overflow = "";
+      document.body.classList.remove("blurred");
     };
-  }, [locked]);
+  }, [isActive, lenis]);
 };

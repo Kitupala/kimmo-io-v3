@@ -15,6 +15,7 @@ const Growth: FC<GrowthProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="mt-2 sm:mt-24"
+      id="growth"
     >
       <GrowthHeader
         heading={slice.primary.heading}

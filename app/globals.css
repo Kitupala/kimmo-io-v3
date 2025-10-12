@@ -44,8 +44,7 @@
   --color-text-secondary: oklch(0.87 0.015 260.7);
   --color-text-tertiary: oklch(0.65 0.015 262.4);
   --color-text-quaternary: oklch(0.51 0.012 261.7);
-
-    --color-text-accent: var(--color-text-accent);
+  --color-text-accent: var(--color-text-accent);
 
   --font-everett: var(--font-everett), system-ui, sans-serif;
   --font-roboto-mono: var(--font-roboto-mono), monospace;
@@ -69,6 +68,10 @@
   }
   body {
     @apply bg-background text-foreground font-everett;
+
+    &.blurred main > *:not(.nav-mobile) {
+      @apply blur-sm transition-[filter] brightness-80 duration-500 ease-in-out;
+    }
   }
   button, a {
     @apply cursor-none;
@@ -78,17 +81,17 @@
 /* === Components === */
 @layer components {
   .nav-link {
-    @apply font-roboto-mono uppercase text-text-primary text-xs;
+    @apply flex items-center gap-2 text-base text-text-primary transition-opacity;
   }
   .nav-link-wrap {
-    @apply block relative overflow-hidden leading-5;
+    @apply block relative overflow-hidden leading-5 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-left after:scale-x-0 after:bg-text-primary after:transition-transform after:duration-200 hover:after:scale-x-100;
   }
   .nav-link-text {
     @apply block will-change-transform translate-y-0;
   }
-  .nav-link-text:nth-child(2) {
-    @apply absolute left-0 top-full;
-  }
+  /*.nav-link-text:nth-child(2) {*/
+  /*  @apply absolute left-0 top-full;*/
+  /*}*/
 }
 
 /* === Utilities === */
