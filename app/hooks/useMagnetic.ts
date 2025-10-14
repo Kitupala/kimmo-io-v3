@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { gsap, useGSAP } from "@/app/lib/gsap";
 
 interface UseMagneticOptions {
   strength?: number;
