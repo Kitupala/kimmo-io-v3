@@ -39,7 +39,6 @@ const MouseCursorContext = createContext<MouseCursorContextType>({
   removeImg: () => {},
 });
 
-// Custom hook to use the mouse cursor context
 export const useMouseCursor = () => useContext(MouseCursorContext);
 
 export default function MouseCursorProvider({
@@ -51,6 +50,10 @@ export default function MouseCursorProvider({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    // Don't initialize on touch devices
+    const hasMousePointer = window.matchMedia("(pointer: fine)").matches;
+    if (!hasMousePointer) return;
 
     MouseFollower.registerGSAP(gsap);
     const cursorInstance = new MouseFollower({
