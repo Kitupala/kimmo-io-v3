@@ -203,10 +203,7 @@ export const Glow = ({
   }, []);
 
   return (
-    <div
-      ref={element}
-      className={cn("hero-gradient relative h-full", className)}
-    >
+    <div ref={element} className={cn("relative h-full", className)}>
       <div
         {...rest}
         style={{

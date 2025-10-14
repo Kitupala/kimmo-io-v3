@@ -13,7 +13,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
       <div className="flex-3">
         <Magnetic
           strength={0.4}
-          className="absolute -top-12 -right-4 z-10 mt-6 size-30 rounded-full border border-grid-line-medium bg-background mask-b-from-60% p-1"
+          className="absolute -top-12 right-0 z-10 mt-6 size-24 rounded-full border border-grid-line-medium bg-background mask-b-from-60% p-1 md:-right-4 md:size-30"
           data-cursor="-hidden"
         >
           <div className="size-full overflow-hidden rounded-full">
