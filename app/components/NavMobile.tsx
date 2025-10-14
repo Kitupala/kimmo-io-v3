@@ -170,7 +170,7 @@ const NavMobile = () => {
         <div
           ref={menuRef}
           className="fixed top-0 right-2 left-2 z-40 rounded-lg border border-grid-line bg-background sm:right-4 sm:left-4 lg:hidden"
-          aria-hidden={!isOpen}
+          inert={!isOpen}
         >
           <div className="mt-28 p-6">
             <ul className="flex flex-col space-y-4">
@@ -192,6 +192,7 @@ const NavMobile = () => {
                         isActive && "font-medium text-text-primary",
                         !isActive && "text-text-tertiary",
                       )}
+                      tabIndex={isOpen ? 0 : -1}
                     >
                       {route.title}
                     </Link>
