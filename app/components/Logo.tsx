@@ -7,12 +7,11 @@ const Logo = ({ fill = "#cdcdcd", ...props }) => {
   useGSAP(() => {
     const logo = logoRef.current;
 
-    gsap.set(logo, { opacity: 0.3, scale: 0.95 });
+    gsap.set(logo, { scale: 0.95 });
 
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 10, delay: 2 });
 
     tl.to(logo, {
-      opacity: 1,
       scale: 1.03,
       duration: 0.2,
       ease: "power4.out",
