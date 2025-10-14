@@ -1,10 +1,13 @@
 import React from "react";
+import Image from "next/image";
+
 import { Content, isFilled } from "@prismicio/client";
 import { JSXMapSerializer, PrismicRichText } from "@prismicio/react";
+
 import AnimatedText from "@/app/components/AnimatedText";
 import { Glow, GlowArea } from "@/app/components/Glow";
-import Magnetic from "@/app/components/cursor/Magnetic";
-import Image from "next/image";
+import Magnetic from "@/app/components/Magnetic";
+
 import { cn } from "@/app/lib/utils";
 
 const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
