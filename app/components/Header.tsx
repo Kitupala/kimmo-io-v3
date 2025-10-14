@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useWindowScroll } from "react-use";
 
 import Logo from "@/app/components/Logo";
 import NavMobile from "@/app/components/NavMobile";
@@ -16,13 +15,39 @@ const Header = () => {
   const lenis = useLenis();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const lastActivityRef = useRef<number>(Date.now());
+  const lastScrollYRef = useRef<number>(0);
+  const currentScrollYRef = useRef<number>(0);
 
   const [isInitialized, setIsInitialized] = useState(false);
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [isMouseOver, setIsMouseOver] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
-  const { y: currentScrollY } = useWindowScroll();
+  // Listen to Lenis scroll events
+  useEffect(() => {
+    if (!lenis) return;
+
+    const handleScroll = (e: { scroll: number }) => {
+      const scrollY = e.scroll;
+      currentScrollYRef.current = scrollY;
+      lastActivityRef.current = Date.now();
+
+      if (scrollY === 0 || isMouseOver) {
+        setIsNavVisible(true);
+      } else if (scrollY > lastScrollYRef.current) {
+        setIsNavVisible(false);
+      } else if (scrollY < lastScrollYRef.current) {
+        setIsNavVisible(true);
+      }
+
+      lastScrollYRef.current = scrollY;
+    };
+
+    lenis.on("scroll", handleScroll);
+
+    return () => {
+      lenis.off("scroll", handleScroll);
+    };
+  }, [lenis, isMouseOver]);
 
   // Check for inactivity
   useEffect(() => {
@@ -32,31 +57,17 @@ const Header = () => {
 
       if (
         inactiveTime >= 1500 &&
-        isNavVisible &&
-        currentScrollY > 50 &&
+        currentScrollYRef.current > 50 &&
         !isMouseOver
       ) {
-        setIsNavVisible(false);
+        setIsNavVisible((prev) => (prev ? false : prev));
       }
     };
 
     const intervalId = setInterval(checkInactivity, 500);
 
     return () => clearInterval(intervalId);
-  }, [isNavVisible, currentScrollY, isMouseOver]);
-
-  useEffect(() => {
-    lastActivityRef.current = Date.now();
-
-    if (currentScrollY === 0 || isMouseOver) {
-      setIsNavVisible(true);
-    } else if (currentScrollY > lastScrollY) {
-      setIsNavVisible(false);
-    } else if (currentScrollY < lastScrollY) {
-      setIsNavVisible(true);
-    }
-    setLastScrollY(currentScrollY);
-  }, [currentScrollY, lastScrollY, isMouseOver]);
+  }, [isMouseOver]);
 
   // Initial page load animation
   useEffect(() => {
@@ -86,7 +97,7 @@ const Header = () => {
     }
   }, [isInitialized]);
 
-  // Scroll-based visibility
+  // Scroll-based visibility animation
   useGSAP(
     () => {
       if (isInitialized) {
