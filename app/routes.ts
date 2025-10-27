@@ -1,16 +1,26 @@
-export const routes = [
+export interface Route {
+  title: string;
+  href: string;
+  offset?: {
+    mobile?: number;
+    desktop?: number;
+  };
+}
+
+export const routes: Route[] = [
   {
     title: "Work",
     href: "#work",
+    offset: { mobile: -110, desktop: -100 },
   },
   {
     title: "Abilities",
     href: "#abilities",
-    offset: -10,
+    offset: { mobile: -80, desktop: 0 },
   },
   {
     title: "Growth",
     href: "#growth",
-    offset: -170,
+    offset: { mobile: -115, desktop: -140 },
   },
 ];

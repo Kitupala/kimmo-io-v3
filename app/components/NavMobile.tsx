@@ -175,18 +175,20 @@ const NavMobile = () => {
           <div className="mt-28 p-6">
             <ul className="flex flex-col space-y-4">
               {routes.map((route, idx) => {
-                const isActive = activeSection === route.href;
+                const { href, title, offset } = route;
+                const isActive = activeSection === href;
+
                 return (
                   <li
-                    key={route.title}
+                    key={title}
                     ref={(el: HTMLLIElement | null): void => {
                       navItemsRef.current[idx] = el;
                     }}
-                    className="w-full rounded-xl bg-gradient-to-tr from-grid-line via-grid-line-bright to-grid-line p-px"
+                    className="pointer-events-auto w-full rounded-xl bg-gradient-to-tr from-grid-line via-grid-line-bright to-grid-line p-px"
                   >
                     <Link
-                      onClick={(e) => handleClick(e, route.href, route.offset)}
-                      href={route.href}
+                      onClick={(e) => handleClick(e, href, offset?.mobile)}
+                      href={href}
                       className={cn(
                         "flex w-full items-center justify-center rounded-xl bg-background p-4",
                         isActive && "font-medium text-text-primary",
@@ -194,7 +196,7 @@ const NavMobile = () => {
                       )}
                       tabIndex={isOpen ? 0 : -1}
                     >
-                      {route.title}
+                      {title}
                     </Link>
                   </li>
                 );
