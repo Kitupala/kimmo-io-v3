@@ -14,7 +14,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       <Bounded
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className="hero-gradient h-svh items-center text-center first:pt-22"
+        className="hero-gradient h-svh text-center first:pt-[35%] xs:first:pt-22"
         id="hero"
       >
         <GridLines />

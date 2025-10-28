@@ -26,7 +26,7 @@ const ProjectDetails = ({ card, index, refs }: ProjectDetailsProps) => {
             <h3>{card.project_title}</h3>
           </div>
 
-          <div className="min-w-1/2 border-grid-line-bright py-6 pr-6 lg:border-l lg:pl-12">
+          <div className="min-w-1/2 border-grid-line-bright pr-6 lg:border-l lg:py-6 lg:pl-12">
             <div
               ref={index === 0 ? refs.descriptionRef : undefined}
               className="card-description"
