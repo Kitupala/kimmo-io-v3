@@ -5,6 +5,7 @@ import { IntroSectionProps } from "@/slices/ProjectOverviewCards/types";
 
 import { useLenisContext } from "@/app/components/LenisProvider";
 import { useLenisParallax } from "@/app/hooks/useLenisParallax";
+import { useMediaQuery } from "@/app/hooks/useMediaQuery";
 
 import AnimatedText from "@/app/components/AnimatedText";
 import Eyebrow from "@/app/components/Eyebrow";
@@ -13,9 +14,9 @@ const IntroSection = ({ heading, description }: IntroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
   const lenis = useLenisContext();
+  const isMobile = useMediaQuery("(max-width: 639px)");
 
-  const moveDistance =
-    typeof window !== "undefined" && window.innerWidth < 768 ? 250 : 310;
+  const moveDistance = isMobile ? 250 : 310;
 
   useLenisParallax({
     lenis,
