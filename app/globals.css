@@ -126,6 +126,9 @@
             rgba(97, 106, 115, 0.02) 100%
     );
   }
+  .bg-noise {
+    @apply fixed inset-0 -z-40 bg-[url('/assets/images/noisetexture.jpg')] bg-center opacity-20 mix-blend-soft-light;
+  }
   .card:nth-child(2) {
     @apply mt-[50vh];
   }
@@ -174,7 +177,7 @@ section .intro, section .cards, section .outro {
   @apply relative w-full h-full overflow-hidden;
 }
 .project-image {
-  @apply absolute h-[calc(100%-48px)] w-[calc(100%-48px)] m-6 rounded-xl overflow-hidden;
+  @apply absolute h-[calc(100%-10px)] w-auto m-2.5 rounded-xl overflow-hidden sm:h-[calc(100%-48px)] sm:w-auto sm:m-6;
 }
 .card-content {
   @apply absolute w-full h-full flex flex-col z-40;
@@ -197,7 +200,7 @@ section .intro, section .cards, section .outro {
   @apply w-full text-3xl sm:text-5xl md:text-6xl tracking-tighter leading-tight sm:mt-2 md:pr-12 whitespace-nowrap;
 }
 .card-details .card-description {
-  @apply w-full mb-8 md:mb-12 translate-x-10 opacity-0 text-text-secondary text-sm md:text-lg;
+  @apply w-full mb-8 md:mb-12 translate-x-10 opacity-0 text-text-secondary text-sm sm:text-lg;
 }
 .card-details .char {
   @apply relative overflow-hidden inline-block;
