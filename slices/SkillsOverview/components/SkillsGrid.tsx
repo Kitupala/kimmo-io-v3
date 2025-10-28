@@ -3,7 +3,7 @@
 import { Content, GroupField } from "@prismicio/client";
 import { Simplify } from "@/prismicio-types";
 import ProficiencyMeter from "@/slices/SkillsOverview/components/ProficiencyMeter";
-import { useMouseCursor } from "@/app/components/MouseCursorProvider";
+
 import { getIconPath } from "@/app/lib/utils";
 
 const SkillsGrid = ({
@@ -13,8 +13,6 @@ const SkillsGrid = ({
     Simplify<Content.SkillsOverviewSliceDefaultPrimarySkillsItem>
   >;
 }) => {
-  const { setImg, removeImg } = useMouseCursor();
-
   return (
     <div className="mt-10 grid w-full max-w-[880px] grid-cols-3 gap-4 self-center sm:mt-20 sm:grid-cols-3 sm:gap-12 md:grid-cols-4">
       {skills.map((item, index) => {
@@ -24,13 +22,7 @@ const SkillsGrid = ({
           <div
             key={`${item.name}-${index}`}
             className="flex flex-col items-center justify-center sm:gap-4"
-            onMouseEnter={() => {
-              const iconPath = `/assets/icons/${iconName}.svg`;
-              setImg(iconPath);
-            }}
-            onMouseLeave={() => {
-              removeImg();
-            }}
+            data-cursor-img={`/assets/icons/${iconName}.svg`}
           >
             <ProficiencyMeter
               score={item.score}
