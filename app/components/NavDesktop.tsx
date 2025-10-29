@@ -69,7 +69,7 @@ const NavDesktop = () => {
             <li key={title} className="desktop-nav-item">
               <Link
                 href={href}
-                onClick={(e) => handleClick(e, href, offset)}
+                onClick={(e) => handleClick(e, href, offset?.desktop)}
                 className={cn(
                   "nav-link",
                   isActive && "opacity-100",

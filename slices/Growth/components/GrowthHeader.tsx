@@ -6,6 +6,7 @@ import { PrismicRichText } from "@prismicio/react";
 
 import { useLenisContext } from "@/app/components/LenisProvider";
 import { useLenisParallax } from "@/app/hooks/useLenisParallax";
+import { useMediaQuery } from "@/app/hooks/useMediaQuery";
 import AnimatedText from "@/app/components/AnimatedText";
 import Eyebrow from "@/app/components/Eyebrow";
 
@@ -19,15 +20,16 @@ const GrowthHeader = ({ heading, subheading, body }: GrowthHeaderProps) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const lenis = useLenisContext();
+  const isMobile = useMediaQuery("(max-width: 639px)");
 
-  const moveDistance =
-    typeof window !== "undefined" && window.innerWidth < 768 ? 180 : 460;
+  const moveDistance = isMobile ? 0 : 460;
+  const startY = isMobile ? 0 : 100;
 
   useLenisParallax({
     lenis,
     sectionRef,
     targetRef: bodyRef,
-    startY: 100,
+    startY: startY,
     moveDistance,
     scrub: 0.5,
   });
@@ -46,7 +48,7 @@ const GrowthHeader = ({ heading, subheading, body }: GrowthHeaderProps) => {
         <Eyebrow text="Growth" />
       </AnimatedText>
 
-      <div className="flex flex-col sm:flex-row">
+      <div className="mb-12 flex flex-col sm:flex-row">
         {isFilled.richText(heading) && (
           <PrismicRichText
             field={heading}
@@ -72,7 +74,7 @@ const GrowthHeader = ({ heading, subheading, body }: GrowthHeaderProps) => {
 
         <div
           ref={bodyRef}
-          className="flex flex-col sm:max-w-2/3 sm:pl-12 md:max-w-1/2"
+          className="flex flex-col sm:max-w-2/3 sm:pl-8 md:max-w-1/2 lg:pl-12"
         >
           {isFilled.richText(subheading) && (
             <PrismicRichText

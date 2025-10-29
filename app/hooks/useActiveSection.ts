@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-
-interface Route {
-  href: string;
-  title: string;
-  offset?: number;
-}
+import type { Route } from "@/app/routes";
 
 interface UseActiveSectionOptions {
   sectionId?: string;

@@ -27,7 +27,10 @@ export default function RootLayout({
         className={`${everett.variable} ${robotoMono.variable} ${digital.variable} antialiased`}
       >
         <LenisProvider>
-          <MouseCursorProvider>{children}</MouseCursorProvider>
+          <MouseCursorProvider>
+            {children}
+            <div className="bg-noise" />
+          </MouseCursorProvider>
         </LenisProvider>
       </body>
       <PrismicPreview repositoryName={repositoryName} />

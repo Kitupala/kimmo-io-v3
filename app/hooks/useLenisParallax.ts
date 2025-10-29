@@ -1,7 +1,7 @@
 "use client";
 
-import { RefObject, useRef } from "react";
-import { gsap, useGSAP, ScrollTrigger } from "@/app/lib/gsap";
+import { RefObject, useEffect } from "react";
+import { gsap, ScrollTrigger } from "@/app/lib/gsap";
 import type Lenis from "lenis";
 
 interface UseLenisParallaxProps {
@@ -21,49 +21,43 @@ export function useLenisParallax({
   moveDistance = 200,
   scrub = 1,
 }: UseLenisParallaxProps) {
-  const initialized = useRef(false);
+  useEffect(() => {
+    if (!lenis || !sectionRef.current || !targetRef.current) return;
 
-  useGSAP(
-    () => {
-      if (!lenis || !sectionRef.current || !targetRef.current) return;
-      if (initialized.current) return;
+    const el = targetRef.current;
 
-      const el = targetRef.current;
+    ScrollTrigger.getAll().forEach((t) => {
+      if (t.trigger === sectionRef.current) t.kill();
+    });
 
-      gsap.set(el, { y: startY });
+    gsap.set(el, { y: startY });
 
-      const init = () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            scroller: document.documentElement,
-            start: "top bottom",
-            end: "bottom top",
-            scrub,
-            invalidateOnRefresh: true,
-          },
-        });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        scroller: document.documentElement,
+        start: "top bottom",
+        end: "bottom top",
+        scrub,
+        invalidateOnRefresh: true,
+      },
+    });
 
-        tl.to(el, {
-          y: startY - moveDistance,
-          ease: "none",
-          force3D: true,
-          duration: 1,
-        });
+    tl.to(el, {
+      y: startY - moveDistance,
+      ease: "none",
+      force3D: true,
+      duration: 1,
+    });
 
-        initialized.current = true;
+    const update = () => ScrollTrigger.update();
+    lenis.on("scroll", update);
+    ScrollTrigger.refresh();
 
-        ScrollTrigger.refresh();
-
-        return () => {
-          tl.scrollTrigger?.kill();
-        };
-      };
-
-      requestAnimationFrame(() => {
-        init();
-      });
-    },
-    { dependencies: [lenis], scope: sectionRef },
-  );
+    return () => {
+      lenis.off("scroll", update);
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, [lenis, startY, moveDistance, scrub, sectionRef, targetRef]);
 }

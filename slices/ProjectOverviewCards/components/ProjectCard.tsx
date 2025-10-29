@@ -38,7 +38,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           {isFirst && scrollHintRef && (
             <div
               ref={scrollHintRef}
-              className="absolute left-1/2 top-1/2 -ml-4 -translate-x-1/2 -translate-y-1/2 transform"
+              className="absolute top-1/2 left-1/2 -ml-6 -translate-x-1/2 -translate-y-1/2 transform sm:-ml-4"
             >
               <ScrollHint />
             </div>
@@ -53,7 +53,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
                 field={card.project_image}
                 alt=""
                 quality={90}
-                className="grayscale-25 object-cover will-change-transform"
+                className="object-cover grayscale-25 will-change-transform"
                 priority={index === 0}
               />
             </div>
