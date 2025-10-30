@@ -177,7 +177,7 @@ const ProficiencyMeter: React.FC<ProficiencyMeterProps> = ({
       </svg>
 
       {/* Percentage text */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex cursor-default items-center justify-center">
         <svg width={size} height={size}>
           <text
             ref={textRef}

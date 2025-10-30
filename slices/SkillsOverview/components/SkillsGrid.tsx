@@ -23,6 +23,7 @@ const SkillsGrid = ({
             key={`${item.name}-${index}`}
             className="flex flex-col items-center justify-center sm:gap-4"
             data-cursor-img={`/assets/icons/${iconName}.svg`}
+            data-cursor="-hide-dot"
           >
             <ProficiencyMeter
               score={item.score}

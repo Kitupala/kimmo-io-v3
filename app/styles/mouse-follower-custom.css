@@ -24,9 +24,10 @@
     background-color: white !important;
 }
 
-/*.mf-cursor.-pointer {*/
-/*    transform: scale(1.5);*/
-/*}*/
+.mf-cursor.-hide-dot:before {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+}
 
 .mf-cursor.-pointer:before {
     transform:scale(0.4) !important;
