@@ -16,7 +16,7 @@
           "config": {
             "label": "Heading",
             "placeholder": "",
-            "allowTargetBlank": true,
+            "allowTargetBlank": false,
             "single": "heading1"
           }
         },
@@ -25,7 +25,7 @@
           "config": {
             "label": "Body",
             "placeholder": "",
-            "allowTargetBlank": true,
+            "allowTargetBlank": false,
             "single": "heading2,heading3,strong,em"
           }
         },
