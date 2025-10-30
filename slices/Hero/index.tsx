@@ -45,10 +45,10 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             <PrismicRichText
               field={slice.primary.body}
               components={{
-                heading2: ({ children }) => (
+                heading3: ({ children }) => (
                   <AnimatedText
-                    as="h2"
-                    className="kerning-none text-base font-light text-text-secondary xs:text-xl md:text-3xl"
+                    as="h3"
+                    className="kerning-none pl-0 text-sm font-light text-text-secondary xs:text-xl md:text-3xl"
                     splitType="words"
                     delay={1.6}
                     lineHeight={1.4}
