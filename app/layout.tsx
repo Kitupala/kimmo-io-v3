@@ -10,6 +10,7 @@ import { everett, robotoMono, digital } from "./fonts";
 
 import LenisProvider from "@/app/components/LenisProvider";
 import MouseCursorProvider from "@/app/components/MouseCursorProvider";
+import { UmamiAnalytics } from "@/app/components/UmamiAnalytics";
 
 export const metadata: Metadata = {
   title: "kimmo.io",
@@ -32,6 +33,7 @@ export default function RootLayout({
             <div className="bg-noise" />
           </MouseCursorProvider>
         </LenisProvider>
+        <UmamiAnalytics />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
