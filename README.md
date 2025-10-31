@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e2d7d41c-9a5e-4343-84be-6c272741dfe5/deploy-status)](https://app.netlify.com/projects/kimmo-io-v3/deploys)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
