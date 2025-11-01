@@ -127,7 +127,7 @@
     );
   }
   .bg-noise {
-    @apply fixed inset-0 -z-40 bg-[url('/assets/images/noisetexture.jpg')] bg-center opacity-20 mix-blend-soft-light;
+    @apply fixed inset-0 -z-40 bg-[url('/assets/images/noisetexture.jpg')] bg-center opacity-10 mix-blend-soft-light;
   }
   .card:nth-child(2) {
     @apply mt-[50vh];
