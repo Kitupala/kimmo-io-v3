@@ -1,38 +1,67 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e2d7d41c-9a5e-4343-84be-6c272741dfe5/deploy-status)](https://app.netlify.com/projects/kimmo-io-v3/deploys)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Nextjs](https://img.shields.io/badge/next_js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Prismic](https://img.shields.io/badge/prismic-white?style=for-the-badge&logo=prismic&logoColor=%235163BA)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwind_css-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Threejs](https://img.shields.io/badge/three_js-black?style=for-the-badge&logo=three.js&logoColor=white)
+![GSAP](https://img.shields.io/badge/greensock_animation_platform-000000?style=for-the-badge&logo=gsap&logoColor=%230AE448)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-## Getting Started
+## kimmo.io — Personal Portfolio
+### ✦ Overview
 
-First, run the development server:
+My personal portfolio and creative playground — designed, built, and animated from the ground up with Next.js, Tailwind CSS, GSAP, and Prismic.
+It blends thoughtful motion with smooth scrolling, subtle 3D details, and a content-driven architecture that keeps it easy to evolve over time.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔗 Live site: [kimmo.io](https://kimmo.io/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
+### ⚡️ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Smooth, GSAP-powered transitions and scroll effects
+- Interactive 3D touches using Three.js + React Three Fiber
+- Custom cursor interactions
+- Content managed via Prismic Slices
+- Privacy-friendly analytics with Umami
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### 🛠️ Built With
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js** 15 & **React** 19
+- **Tailwind CSS** v4 for styling
+- **Prismic** CMS with Slice Machine for content management
+- **Three.js** & React Three Fiber for 3D graphics
+- **GSAP** for advanced animations
+- **Lenis** for smooth scroll
+- UI Utilities: Radix UI, Lucide Icons, class-variance-authority, tailwind-merge
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🧱 Project Structure (high level)
+- `app/` — App router layouts, pages, providers, and global styles
+- `customtypes/` — Prismic custom type definitions
+- `slices/` — Prismic Slice components
+- `prismicio.ts` — Prismic client setup and route resolver
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ✨ Behind the Scenes
+Planned in **Figma**, where layout and mood took shape before code.
+Each interaction was designed with rhythm in mind — motion serving tone, not distraction.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### 📄 License
+© 2025 Kitupala. All rights reserved.  
+Feel free to explore and learn from the code — please don’t copy the design wholesale.
+
+---
+
+### Acknowledgements
+[JavaScript Mastery](https://www.youtube.com/@javascriptmastery/videos)  
+[Jonas Schmedtmann](https://jonas.io/)  
+[Moyra - Capsules®](https://capsules.moyra.co/)  
+
+
