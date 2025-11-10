@@ -15,7 +15,7 @@
 
 ![divider](https://github.com/user-attachments/assets/a8cbb785-9e17-4332-ae19-022cc19dd276)
 
-### 🔋 Overview
+### Overview
 
 My personal portfolio and creative playground — designed, built, and animated from the ground up with Next.js, Tailwind CSS, GSAP, and Prismic.
 It blends thoughtful motion with smooth scrolling, subtle 3D details, and a content-driven architecture that keeps it easy to evolve over time.
@@ -56,7 +56,12 @@ It blends thoughtful motion with smooth scrolling, subtle 3D details, and a cont
 
 ### ✨ Behind the Scenes
 Planned in **Figma**, where layout and mood took shape before code.
-Each interaction was designed with rhythm in mind — motion serving tone, not distraction.
+Each interaction was designed with rhythm in mind — motion serving tone, not distraction.  
+<br>
+<p align="center">  
+ <img width="700" alt="Figma mockup" src="https://github.com/user-attachments/assets/695e5e76-3409-44ab-8c7f-3619831b3f85" />
+</p>
+
 
 ![divider](https://github.com/user-attachments/assets/a8cbb785-9e17-4332-ae19-022cc19dd276)
 
