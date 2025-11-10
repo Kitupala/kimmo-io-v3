@@ -1,5 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e2d7d41c-9a5e-4343-84be-6c272741dfe5/deploy-status)](https://app.netlify.com/projects/kimmo-io-v3/deploys)
-<img width="1176" height="411" alt="Homepage preview" src="https://github.com/user-attachments/assets/6092b941-4fc9-43c2-a490-f30bbb281b13" />
+
+![Homepage preview – light](https://github.com/user-attachments/assets/c1bc113d-7c4b-4603-a601-edbf567b6e56#gh-light-mode-only)
+![Homepage preview – dark](https://github.com/user-attachments/assets/6092b941-4fc9-43c2-a490-f30bbb281b13#gh-dark-mode-only)
+
 
 <div align="center">
   
@@ -14,6 +17,8 @@
 </div>
 
 ![divider](https://github.com/user-attachments/assets/a8cbb785-9e17-4332-ae19-022cc19dd276)
+
+
 
 ### Overview 
 
@@ -58,7 +63,8 @@ Designed first in **Figma** — where layout, hierarchy, and tone took shape bef
 Motion was later composed to complement the design, adding rhythm without distraction.  
 <br>
 <p align="center">  
- <img width="700" alt="Figma mockup" src="https://github.com/user-attachments/assets/695e5e76-3409-44ab-8c7f-3619831b3f85" />
+ <img width="750" alt="Figma mockup (light)" src="https://github.com/user-attachments/assets/b34c897e-1daf-4c7f-acb9-0aa40e4775a5#gh-light-mode-only" />
+ <img width="750" alt="Figma mockup (dark)" src="https://github.com/user-attachments/assets/41f700dd-a85a-4eb3-877f-0e32f8e2592d#gh-dark-mode-only" />
 </p>
 
 
