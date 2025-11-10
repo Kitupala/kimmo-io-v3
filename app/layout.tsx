@@ -15,6 +15,9 @@ import { UmamiAnalytics } from "@/app/components/UmamiAnalytics";
 export const metadata: Metadata = {
   title: "kimmo.io",
   description: "Personal web portfolio",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
