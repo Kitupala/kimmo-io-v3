@@ -15,10 +15,9 @@
 
 ![divider](https://github.com/user-attachments/assets/a8cbb785-9e17-4332-ae19-022cc19dd276)
 
-### Overview
+### Overview 
 
-My personal portfolio and creative playground — designed, built, and animated from the ground up with Next.js, Tailwind CSS, GSAP, and Prismic.
-It blends thoughtful motion with smooth scrolling, subtle 3D details, and a content-driven architecture that keeps it easy to evolve over time.
+A personal portfolio and creative playground — designed, built, and animated from the ground up with Next.js, Tailwind CSS, GSAP, and Prismic. It blends thoughtful motion, smooth scroll, and subtle 3D detail in a content-driven architecture built to evolve.
 
 🔗 Live site: [kimmo.io](https://kimmo.io/)
 
@@ -26,10 +25,10 @@ It blends thoughtful motion with smooth scrolling, subtle 3D details, and a cont
 
 ### ⚡️ Features
 
-- Smooth, GSAP-powered transitions and scroll effects
-- Interactive 3D touches using Three.js + React Three Fiber
-- Custom cursor interactions
-- Content managed via Prismic Slices
+- Smooth GSAP-powered transitions and scroll effects
+- Interactive 3D details via Three.js + React Three Fiber
+- Custom cursor interactions and motion cues
+- Content-driven pages powered by Prismic Slices
 - Privacy-friendly analytics with Umami
 
 ![divider](https://github.com/user-attachments/assets/a8cbb785-9e17-4332-ae19-022cc19dd276)
@@ -54,9 +53,9 @@ It blends thoughtful motion with smooth scrolling, subtle 3D details, and a cont
 
 ![divider](https://github.com/user-attachments/assets/a8cbb785-9e17-4332-ae19-022cc19dd276)
 
-### ✨ Behind the Scenes
-Planned in **Figma**, where layout and mood took shape before code.
-Each interaction was designed with rhythm in mind — motion serving tone, not distraction.  
+### ✨ Behind the Scenes 
+Designed first in **Figma** — where layout, hierarchy, and tone took shape before code.
+Motion was later composed to complement the design, adding rhythm without distraction.  
 <br>
 <p align="center">  
  <img width="700" alt="Figma mockup" src="https://github.com/user-attachments/assets/695e5e76-3409-44ab-8c7f-3619831b3f85" />
