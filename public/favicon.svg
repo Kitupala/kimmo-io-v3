@@ -14,7 +14,7 @@
         }
         @media (prefers-color-scheme: dark) {
         path {
-        fill: #CFD5DE;
+        fill: #F8F8F8;
         }
         }
     </style>
