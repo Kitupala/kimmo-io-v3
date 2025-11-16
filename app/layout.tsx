@@ -1,30 +1,23 @@
 import React from "react";
-import type { Metadata } from "next";
-
 import { PrismicPreview } from "@prismicio/next";
-import "mouse-follower/dist/mouse-follower.min.css";
-import "@/app/globals.css";
-
 import { repositoryName } from "@/prismicio";
+
+import "@/app/globals.css";
+import "mouse-follower/dist/mouse-follower.min.css";
+
 import { everett, robotoMono, digital } from "./fonts";
 
-import LenisProvider from "@/app/components/LenisProvider";
 import MouseCursorProvider from "@/app/components/MouseCursorProvider";
+import LenisProvider from "@/app/components/LenisProvider";
 import { UmamiAnalytics } from "@/app/components/UmamiAnalytics";
 
-export const metadata: Metadata = {
-  title: "kimmo.io",
-  description: "Personal web portfolio",
-  icons: {
-    icon: "/favicon.svg",
-  },
-};
+export { generateMetadata } from "@/app/generateMetadata";
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="dark">
       <body
@@ -36,9 +29,10 @@ export default function RootLayout({
             <div className="bg-noise" />
           </MouseCursorProvider>
         </LenisProvider>
+
         <UmamiAnalytics />
+        <PrismicPreview repositoryName={repositoryName} />
       </body>
-      <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
 }

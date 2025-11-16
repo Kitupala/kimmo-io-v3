@@ -29,29 +29,37 @@
     },
     "SEO & Metadata": {
       "meta_title": {
+        "type": "Key Text",
         "config": {
           "label": "Meta Title",
-          "placeholder": "A title of the page used for social media and search engines"
-        },
-        "type": "Text"
+          "placeholder": "Title used for browsers, search engines, and social sharing"
+        }
       },
       "meta_description": {
+        "type": "Key Text",
         "config": {
           "label": "Meta Description",
-          "placeholder": "A brief summary of the page"
-        },
-        "type": "Text"
+          "placeholder": "A concise summary of this page"
+        }
       },
       "meta_image": {
+        "type": "Image",
         "config": {
-          "constraint": {
-            "height": 1260,
-            "width": 2400
-          },
           "label": "Meta Image",
-          "thumbnails": []
-        },
-        "type": "Image"
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
+          "thumbnails": [],
+          "alt": "required"
+        }
+      },
+      "canonical_url": {
+        "type": "Key Text",
+        "config": {
+          "label": "Canonical URL (optional)",
+          "placeholder": "https://www.yoursite.com/"
+        }
       }
     }
   }
