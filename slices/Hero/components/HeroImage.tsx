@@ -146,7 +146,7 @@ const HeroImage = () => {
           }}
         >
           <Suspense fallback={null}>
-            <ThreeHeroImage src="/assets/images/herowithline.png" />
+            <ThreeHeroImage src="/assets/images/hero.png" />
           </Suspense>
         </FluidGlassLens>
       </div>
