@@ -5,63 +5,56 @@ import GridLines from "@/app/components/GridLines";
 import HeroImage from "@/slices/Hero/components/HeroImage";
 import { Bounded } from "@/app/components/Bounded";
 import AnimatedText from "@/app/components/AnimatedText";
+import CircularText from "@/app/components/CircularText";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
 const Hero: FC<HeroProps> = ({ slice }) => {
   return (
-    <div id="home">
-      <Bounded
-        data-slice-type={slice.slice_type}
-        data-slice-variation={slice.variation}
-        className="hero-gradient h-svh text-center first:pt-[35%] xs:first:pt-22"
-        id="hero"
-      >
-        <GridLines />
-        <HeroImage />
-        <div className="pointer-events-none relative z-20">
-          {isFilled.richText(slice.primary.heading) && (
-            <PrismicRichText
-              field={slice.primary.heading}
-              components={{
-                heading1: ({ children }) => (
-                  <AnimatedText
-                    gradient
-                    as="h1"
-                    className="z-30 my-8 w-full text-5xl font-light tracking-tight text-text-primary hover:pointer-events-auto xs:my-12 xs:text-7xl md:text-8xl md:leading-tight"
-                    ease="power2.inOut"
-                    duration={0.5}
-                    delay={1}
-                    lineHeight={1.1}
-                  >
-                    {children}
-                  </AnimatedText>
-                ),
-              }}
-            />
-          )}
+    <Bounded
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+      className="hero-gradient h-svh text-center first:pt-[35%] xs:first:pt-22"
+      id="hero"
+    >
+      <GridLines />
+      <HeroImage />
+      <div className="pointer-events-none relative z-20">
+        {isFilled.richText(slice.primary.heading) && (
+          <PrismicRichText
+            field={slice.primary.heading}
+            components={{
+              heading1: ({ children }) => (
+                <AnimatedText
+                  gradient
+                  as="h1"
+                  className="z-30 mt-12 w-full text-3xl tracking-tight text-text-primary hover:pointer-events-auto xs:mt-26 xs:text-4xl md:text-6xl"
+                  ease="power2.inOut"
+                  duration={0.4}
+                  delay={1.2}
+                  lineHeight={1.2}
+                  stagger={0.35}
+                >
+                  {children}
+                </AnimatedText>
+              ),
+            }}
+          />
+        )}
 
-          {isFilled.richText(slice.primary.body) && (
-            <PrismicRichText
-              field={slice.primary.body}
-              components={{
-                heading3: ({ children }) => (
-                  <AnimatedText
-                    as="h3"
-                    className="kerning-none pl-0 text-sm font-light text-text-secondary xs:text-xl md:text-3xl"
-                    splitType="words"
-                    delay={1.6}
-                    lineHeight={1.4}
-                  >
-                    {children}
-                  </AnimatedText>
-                ),
-              }}
-            />
-          )}
-        </div>
-      </Bounded>
-    </div>
+        <CircularText
+          text="Engineer❖Frontend❖"
+          onHover="slowDown"
+          spinDuration={25}
+          appearDelay={4}
+          classNames="justify-self-center mt-64 xs:absolute xs:left-12 z-50 xs:-bottom-[320px] uppercase w-28 h-28 md:w-36 md:h-36 hover:text-text-tertiary transition-colors duration-300 text-text-quaternary"
+          image={{
+            src: "/assets/images/monogram.png",
+            alt: "K-monogram",
+          }}
+        />
+      </div>
+    </Bounded>
   );
 };
 
