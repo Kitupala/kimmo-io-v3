@@ -12,7 +12,7 @@ export const setupMarqueeAnimation = (marqueeRef: HTMLDivElement | null) => {
 
   gsap.to(marquee, {
     x: `-=${distance}`,
-    duration: 400,
+    duration: 100,
     ease: "none",
     repeat: -1,
     modifiers: {
