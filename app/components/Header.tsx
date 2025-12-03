@@ -10,7 +10,6 @@ import NavDesktop from "@/app/components/NavDesktop";
 import { gsap, useGSAP } from "@/app/lib/gsap";
 import { useLenis } from "@/app/hooks/useLenis";
 import { SCROLL_CONFIG } from "@/app/constants";
-import Image from "next/image";
 
 const Header = () => {
   const lenis = useLenis();
@@ -139,17 +138,10 @@ const Header = () => {
         <div className="mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="relative z-50 flex items-center justify-center gap-3 py-2"
+            className="relative z-50 flex items-center justify-center gap-3 py-4"
             data-cursor="-inverse"
             onClick={handleLogoClick}
           >
-            <Image
-              src="/assets/images/monogram.png"
-              alt="K-monogram"
-              width={22}
-              height={22}
-            />
-
             <Logo className="h-auto w-[60px] sm:w-[75px]" fill="#cfd5de" />
           </Link>
 
