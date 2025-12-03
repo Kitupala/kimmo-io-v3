@@ -23,4 +23,9 @@ export const routes: Route[] = [
     href: "#growth",
     offset: { mobile: -115, desktop: -140 },
   },
+  {
+    title: "Contact",
+    href: "#contact",
+    offset: { mobile: 0, desktop: 0 },
+  },
 ];
