@@ -1,12 +1,24 @@
 import AnimatedText from "@/app/components/AnimatedText";
 import Image from "next/image";
+import Link from "next/link";
 
 const OutroSection = () => {
   const content = (
     <>
-      <span>This is just the spark — </span>
+      <span>Just the spark — </span>
       <span>
-        the full explosion of code and chaos lives on my <b>GitHub</b>.
+        the full blast of code and chaos lives on my{" "}
+        <Link
+          href="https://github.com/Kitupala"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold"
+          aria-label="Link to GitHub profile"
+          data-cursor="-inverse"
+        >
+          GitHub
+        </Link>
+        .
       </span>
     </>
   );
