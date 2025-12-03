@@ -83,7 +83,7 @@ const GrowthHeader = ({ heading, subheading, body }: GrowthHeaderProps) => {
                 heading4: ({ children }) => (
                   <AnimatedText
                     as="p"
-                    className="grow pt-5 pr-3 text-base text-text-secondary md:text-lg"
+                    className="grow pt-5 pr-3 text-base text-pretty text-text-secondary md:text-lg"
                     splitType="block"
                     lineHeight={1.3}
                     duration={0.8}

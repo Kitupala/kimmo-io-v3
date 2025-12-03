@@ -62,7 +62,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                   paragraph: ({ children }) => (
                     <AnimatedText
                       as="p"
-                      className="text-base text-text-tertiary will-change-transform md:text-lg"
+                      className="text-base text-pretty text-text-tertiary will-change-transform md:text-lg"
                       splitType="block"
                       lineHeight={1.3}
                       blur={8}
@@ -117,7 +117,7 @@ const AboutSection = ({ slice }: { slice: Content.SkillsOverviewSlice }) => {
                     heading5: ({ children }) => (
                       <AnimatedText
                         as="h4"
-                        className="mb-1 text-base text-text-tertiary md:text-lg"
+                        className="mb-1 text-base text-pretty text-text-tertiary md:text-lg"
                         splitType="block"
                         lineHeight={1.3}
                         blur={8}

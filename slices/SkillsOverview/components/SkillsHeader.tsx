@@ -56,7 +56,7 @@ const SkillsHeader = ({ heading, body }: SkillsHeaderProps) => {
               paragraph: ({ children }) => (
                 <AnimatedText
                   as="p"
-                  className="grow pt-3 text-base text-text-tertiary sm:max-w-2/3 sm:pl-12 md:max-w-1/2 md:text-lg"
+                  className="grow pt-3 text-base text-text-tertiary text-pretty sm:max-w-2/3 sm:pl-12 md:max-w-1/2 md:text-lg"
                   splitType="block"
                   lineHeight={1.3}
                   duration={0.8}

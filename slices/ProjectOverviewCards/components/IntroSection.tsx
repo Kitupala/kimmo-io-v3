@@ -71,7 +71,7 @@ const IntroSection = ({ heading, description }: IntroSectionProps) => {
 
           <div
             ref={descRef}
-            className="grow pt-3 text-base text-text-tertiary will-change-transform sm:max-w-2/3 sm:pl-12 md:max-w-1/2 md:text-lg"
+            className="grow pt-3 text-base text-pretty text-text-tertiary will-change-transform sm:max-w-2/3 sm:pl-12 md:max-w-1/2 md:text-lg"
           >
             {isFilled.richText(description) && (
               <PrismicRichText field={description} />
