@@ -24,7 +24,7 @@
     "lucide-react": "^0.544.0",
     "maath": "^0.10.8",
     "mouse-follower": "^1.1.2",
-    "next": "15.4.7",
+    "next": "^15.4.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-use": "^17.6.0",
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@prismicio/mcp-server": "^0.0.14",
     "@slicemachine/adapter-next": "^0.3.82",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
