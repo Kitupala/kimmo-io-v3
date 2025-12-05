@@ -1,7 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e2d7d41c-9a5e-4343-84be-6c272741dfe5/deploy-status)](https://app.netlify.com/projects/kimmo-io-v3/deploys)
 
-![Homepage preview – light](https://github.com/user-attachments/assets/c1bc113d-7c4b-4603-a601-edbf567b6e56#gh-light-mode-only)
-![Homepage preview – dark](https://github.com/user-attachments/assets/6092b941-4fc9-43c2-a490-f30bbb281b13#gh-dark-mode-only)
+![Homepage preview – light](https://github.com/user-attachments/assets/1218c61f-695d-4697-8765-b865cbbfbda1#gh-light-mode-only)
+![Homepage preview – dark](https://github.com/user-attachments/assets/3ed79f6b-8881-4bac-9ea0-2a8ccf020240#gh-dark-mode-only)
+
 
 
 <div align="center">
