@@ -64,8 +64,8 @@ Designed first in **Figma** — where layout, hierarchy, and tone took shape bef
 Motion was later composed to complement the design, adding rhythm without distraction.  
 <br>
 <p align="center">  
- <img width="750" alt="Figma mockup (light)" src="https://github.com/user-attachments/assets/b34c897e-1daf-4c7f-acb9-0aa40e4775a5#gh-light-mode-only" />
- <img width="750" alt="Figma mockup (dark)" src="https://github.com/user-attachments/assets/41f700dd-a85a-4eb3-877f-0e32f8e2592d#gh-dark-mode-only" />
+ <img width="750" alt="Figma mockup (light)" src="https://github.com/user-attachments/assets/67b50ec7-d9b1-4e97-a2c6-3725b388261f#gh-light-mode-only" />
+ <img width="750" alt="Figma mockup (dark)" src="https://github.com/user-attachments/assets/0c9d6d4f-000c-40e8-ac6c-f9a695b9a9c9#gh-dark-mode-only" />
 </p>
 
 
